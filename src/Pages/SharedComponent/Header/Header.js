@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   return (
     <>
-      <nav className="relative w-full flex flex-wrap items-center justify-between py-2 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light">
+      <nav className="sticky top-0 w-full flex flex-wrap items-center justify-between py-1 bg-gradient-to-r from-[#1f4037] to-[#99f2c8] text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light">
         <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
           {/* Hamburger */}
           <button
@@ -49,20 +49,19 @@ const Header = () => {
               />
             </Link>
             {/* <!-- Left Menu --> */}
-            <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+            <ul className="navbar-nav uppercase tracking-wider flex flex-col pl-0 list-style-none mr-auto">
               <li className="nav-item p-2">
                 <Link
-                  className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                  className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
                   to="/"
                 >
                   Inventory
                 </Link>
               </li>
             </ul>
-            {/* <!-- Left links --> */}
           </div>
 
-          {/* <!-- Right elements --> */}
+          {/* <!-- Right Menu --> */}
           <div className="flex items-center relative">
             {/* <!-- Icon --> */}
 

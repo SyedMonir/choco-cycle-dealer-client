@@ -7,7 +7,7 @@ import { FaLinkedinIn } from 'react-icons/fa';
 const Footer = () => {
   return (
     <>
-      <footer className="text-gray-400 bg-gray-900 body-font">
+      <footer className="text-gray-400 bg-[#1f4037] body-font">
         <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
           <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
             <Link
@@ -22,7 +22,7 @@ const Footer = () => {
               />
               <span className="ml-3 text-xl">Choco Cycle Dealer</span>
             </Link>
-            <p className="mt-2 text-sm text-gray-500">
+            <p className="mt-2 text-sm text-gray-400">
               Welcome to the Biggest Cycle Warehouse in Bangladesh.
             </p>
           </div>
@@ -86,25 +86,25 @@ const Footer = () => {
           </div>
         </div>
         {/* Second Footer */}
-        <div className="bg-gray-800 bg-opacity-75">
+        <div className="bg-gradient-to-r from-[#1f4037]  to-[#99f2c8] bg-opacity-75">
           <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-            <p className="text-gray-400 text-sm text-center sm:text-left">
+            <p className="text-gray-300 text-sm text-center sm:text-left">
               © 2022 Choco-Cycle —
               <a
                 href="https://www.linkedin.com/in/syed-monirul/"
                 rel="noopener noreferrer"
-                className="text-gray-500 ml-1"
+                className="ml-1"
                 target="_blank"
               >
                 @Syed_Monir
               </a>
             </p>
-            <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+            <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start text-gray-600">
               <a
                 href="https://github.com/SyedMonir"
                 target="_blank"
                 rel="noopener noreferrer"
-                className=" text-gray-400"
+                className=""
               >
                 <FiGithub />
               </a>
@@ -112,7 +112,7 @@ const Footer = () => {
                 href="https://www.linkedin.com/in/syed-monirul/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-3 text-gray-400"
+                className="ml-3"
               >
                 <FaLinkedinIn />
               </a>
@@ -120,7 +120,7 @@ const Footer = () => {
                 href="https://www.facebook.com/SyedMoonir/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 ml-3"
+                className=" ml-3"
               >
                 <FaFacebookF />
               </a>
