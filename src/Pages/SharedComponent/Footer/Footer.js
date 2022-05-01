@@ -86,9 +86,9 @@ const Footer = () => {
           </div>
         </div>
         {/* Second Footer */}
-        <div className="bg-gradient-to-r from-[#1f4037]  to-[#99f2c8] bg-opacity-75">
+        <div className="shadow-2xl bg-gradient-to-r from-[#88f5c2]  to-[#1f4037c4] bg-opacity-75">
           <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-            <p className="text-gray-300 text-sm text-center sm:text-left">
+            <p className="text-gray-800 text-sm text-center sm:text-left">
               © 2022 Choco-Cycle —
               <a
                 href="https://www.linkedin.com/in/syed-monirul/"
@@ -99,7 +99,7 @@ const Footer = () => {
                 @Syed_Monir
               </a>
             </p>
-            <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start text-gray-600">
+            <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start text-gray-300">
               <a
                 href="https://github.com/SyedMonir"
                 target="_blank"
