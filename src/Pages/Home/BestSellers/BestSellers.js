@@ -26,7 +26,7 @@ const BestSellers = () => {
         centeredSlides={true}
         slidesPerView={'auto'}
         autoplay={{
-          delay: 2500,
+          delay: 3000,
           disableOnInteraction: false,
         }}
         coverflowEffect={{
@@ -47,7 +47,30 @@ const BestSellers = () => {
       >
         {inventory.map((cycle) => (
           <SwiperSlide key={cycle._id}>
-            <img src={cycle.image} alt="cycle-2" />
+            <div className="flex justify-center p-4">
+              <div className="rounded-lg shadow-lg bg-white max-w-sm">
+                <a
+                  href="#!"
+                  data-mdb-ripple="true"
+                  data-mdb-ripple-color="light"
+                >
+                  <img
+                    className="rounded-t-lg hover:scale-105 hover:shadow-xl transition duration-300 ease-in-out"
+                    src={cycle?.image}
+                    alt=""
+                  />
+                </a>
+                <div className="p-6">
+                  <h5 className="text-gray-900 text-xl font-medium mb-2">
+                    Card title
+                  </h5>
+                  <p className="text-gray-700 text-base mb-4">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                </div>
+              </div>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

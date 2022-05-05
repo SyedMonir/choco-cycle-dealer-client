@@ -2,10 +2,16 @@ import React from 'react';
 
 const Cycle = ({ cycle }) => {
   return (
-    <div className="flex justify-center m-5">
+    <div
+      data-aos="zoom-in"
+      data-aos-delay="80"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+      className="flex justify-center m-5"
+    >
       <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
         <img
-          className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg hover:scale-110 hover:shadow-xl transition duration-300 ease-in-out"
+          className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg hover:scale-105 hover:shadow-xl transition duration-300 ease-in-out"
           src={cycle?.image}
           alt={''}
         />
