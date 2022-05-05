@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
+import CycleDetails from './Pages/CycleDetails/CycleDetails';
 import Home from './Pages/Home/Home';
 import Footer from './Pages/SharedComponent/Footer/Footer';
 import Header from './Pages/SharedComponent/Header/Header';
@@ -11,6 +11,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/cycle/:cycleId" element={<CycleDetails />} />
         </Routes>
       </main>
       <Footer />

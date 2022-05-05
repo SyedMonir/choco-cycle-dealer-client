@@ -13,7 +13,7 @@ const FeaturedInventory = () => {
     <section className="relative">
       <section className="text-center my-8 ">
         <p className="text-xs">YOUR RIDE START HERE.</p>
-        <h2 className="text-3xl text-[#1f4037]">Our Inventories</h2>
+        <h2 className="text-3xl text-[#1f4037]">Our Feature Inventories</h2>
         <span className="inline-block h-1 w-16 rounded bg-[#1f4037] mt-6 mb-4"></span>
         {spinner ? (
           <Spinner />

@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Cycle = ({ cycle }) => {
+  const navigate = useNavigate();
   return (
     <div
       data-aos="zoom-in"
@@ -29,7 +31,10 @@ const Cycle = ({ cycle }) => {
             <p className="text-gray-600 text-xs">
               Seller: <span className="underline cursor-pointer">{'Demo'}</span>
             </p>
-            <button className="bg-[#1f4037] text-white hover:text-gray-300 uppercase py-1 px-4 rounded">
+            <button
+              onClick={() => navigate(`/cycle/${cycle?._id}`)}
+              className="bg-[#1f4037] text-white hover:text-gray-300 uppercase py-1 px-4 rounded"
+            >
               Update
             </button>
           </div>
