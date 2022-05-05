@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { MdFavorite } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import Spinner from '../SharedComponent/Spinner/Spinner';
 
 const CycleDetails = () => {
@@ -40,8 +41,8 @@ const CycleDetails = () => {
                   role="tablist"
                 >
                   <li className="nav-item" role="presentation">
-                    <a
-                      href="#tabs-home3"
+                    <Link
+                      to="#tabs-home3"
                       className=" nav-link flex-grow w-full block text-lg leading-tight border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-300 focus:border-transparent active"
                       id="tabs-home-tab3"
                       data-bs-toggle="pill"
@@ -51,11 +52,11 @@ const CycleDetails = () => {
                       aria-selected="true"
                     >
                       Description
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item" role="presentation">
-                    <a
-                      href="#tabs-profile3"
+                    <Link
+                      to="#tabs-profile3"
                       className="nav-link flex-grow w-full block text-lg leading-tight border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-300 focus:border-transparent"
                       id="tabs-profile-tab3"
                       data-bs-toggle="pill"
@@ -65,11 +66,11 @@ const CycleDetails = () => {
                       aria-selected="false"
                     >
                       Reviews
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item" role="presentation">
-                    <a
-                      href="#tabs-messages3"
+                    <Link
+                      to="#tabs-messages3"
                       className="nav-link flex-grow text-lg  w-full block  leading-tight border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-300 focus:border-transparent"
                       id="tabs-messages-tab3"
                       data-bs-toggle="pill"
@@ -79,7 +80,7 @@ const CycleDetails = () => {
                       aria-selected="false"
                     >
                       Details
-                    </a>
+                    </Link>
                   </li>
                 </ul>
                 <div className="tab-content" id="tabs-tabContent3">

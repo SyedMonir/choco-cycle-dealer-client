@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AiOutlineMenu } from 'react-icons/ai';
 
 const Header = () => {
   return (
@@ -8,7 +9,7 @@ const Header = () => {
         <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
           {/* Hamburger */}
           <button
-            className=" navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+            className=" navbar-toggler text-white border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -16,21 +17,7 @@ const Header = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <svg
-              aria-hidden="true"
-              focusable="false"
-              data-prefix="fas"
-              data-icon="bars"
-              className="w-6"
-              role="img"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 448 512"
-            >
-              <path
-                fill="currentColor"
-                d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-              ></path>
-            </svg>
+            <AiOutlineMenu />
           </button>
           <div
             className="collapse navbar-collapse flex-grow items-center"
@@ -63,12 +50,29 @@ const Header = () => {
 
           {/* <!-- Right Menu --> */}
           <div className="flex items-center relative">
+            <ul className="navbar-nav uppercase tracking-wider flex pl-0 list-style-none mr-auto">
+              <li className="nav-item p-2">
+                <Link
+                  className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
+                  to="/login"
+                >
+                  Login
+                </Link>
+              </li>
+              <li className="nav-item p-2">
+                <Link
+                  className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
+                  to="/signup"
+                >
+                  Signup
+                </Link>
+              </li>
+            </ul>
             {/* <!-- Icon --> */}
-
-            <div className="dropdown relative">
-              <a
+            <div className="dropdown relative ml-1">
+              <Link
                 className="dropdown-toggle flex items-center hidden-arrow"
-                href="/"
+                to="/"
                 id="dropdownMenuButton2"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -81,7 +85,7 @@ const Header = () => {
                   alt=""
                   loading="lazy"
                 />
-              </a>
+              </Link>
               <ul
                 className="dropdown-menu min-w-max absolute hidden bg-white  text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 m-0 bg-clip-padding border-none left-auto  right-0"
                 aria-labelledby="dropdownMenuButton2"
