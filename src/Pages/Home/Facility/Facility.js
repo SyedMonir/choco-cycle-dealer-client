@@ -33,7 +33,7 @@ const Facility = () => {
                   Complete Overhaul
                 </h2>
                 <span className="inline-block h-1 w-10 rounded bg-[#88f5c2] mt-6 mb-4"></span>
-                <p className="leading-relaxed">
+                <p className="leading-relaxed text-justify">
                   An overhaul is a comprehensive service during which the
                   complete bike is disassembled, bearings cleaned or replaced,
                   drivetrain cleaned and cables and housing replaced. After
@@ -58,7 +58,7 @@ const Facility = () => {
                   Custom Parts & Accessories
                 </h2>
                 <span className="inline-block h-1 w-10 rounded bg-[#88f5c2] mt-6 mb-4"></span>
-                <p className="leading-relaxed">
+                <p className="leading-relaxed text-justify">
                   Custom Junkies offers bike parts and components for classic
                   (steel) road bikes, single speed and track bikes, fixed gear
                   and MTB. Our goal is to offer not only a fine selection of
@@ -86,7 +86,7 @@ const Facility = () => {
                   Bike Fitting & Delivery
                 </h2>
                 <span className="inline-block h-1 w-10 rounded bg-[#88f5c2] mt-6 mb-4"></span>
-                <p className="leading-relaxed">
+                <p className="leading-relaxed text-justify">
                   A Complete Fit will measure your body height, upper body, leg
                   & arm length, shoulder width and foot size on our 2D Body
                   Analyzer. Based on those metrics, our unique algorithm, your

@@ -11,12 +11,15 @@ import './BestSellers.css';
 
 // import required modules
 import { Autoplay, EffectCoverflow, Pagination, Navigation } from 'swiper';
+import useInventory from '../../../hooks/useInventory';
 
 const BestSellers = () => {
+  const [inventory] = useInventory();
   return (
     <section className="text-center py-12 text-gray-500">
       <p className="text-xs">CHECK IT OUT.</p>
       <h2 className="text-3xl text-[#1f4037]">Best Sellers</h2>
+      <span className="inline-block h-1 w-14 rounded bg-[#1f4037] mt-6 mb-4"></span>
       <Swiper
         effect={'coverflow'}
         grabCursor={true}
@@ -42,24 +45,11 @@ const BestSellers = () => {
         modules={[Autoplay, Navigation, EffectCoverflow, Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img src="https://i.ibb.co/F37TLNV/cycle-1.jpg" alt="cycle-1" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://i.ibb.co/fpcDTRz/cycle-2.jpg" alt="cycle-2" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://i.ibb.co/fpcDTRz/cycle-2.jpg" alt="cycle-3" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://i.ibb.co/F37TLNV/cycle-1.jpg" alt="cycle-1" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://i.ibb.co/fpcDTRz/cycle-2.jpg" alt="cycle-2" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://i.ibb.co/fpcDTRz/cycle-2.jpg" alt="cycle-3" />
-        </SwiperSlide>
+        {inventory.map((cycle) => (
+          <SwiperSlide key={cycle._id}>
+            <img src={cycle.image} alt="cycle-2" />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );
