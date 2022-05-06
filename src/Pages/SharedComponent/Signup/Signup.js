@@ -1,11 +1,12 @@
 import React from 'react';
 import {
   useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
   useUpdateProfile,
 } from 'react-firebase-hooks/auth';
 import '../Login/Login.css';
 import { FcGoogle } from 'react-icons/fc';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import auth from '../../../firebase.init';
 import Spinner from '../Spinner/Spinner';
@@ -13,6 +14,7 @@ import { toast } from 'react-toastify';
 
 const Signup = () => {
   const navigate = useNavigate();
+
   // React hook form
   const {
     register,
@@ -21,9 +23,14 @@ const Signup = () => {
   } = useForm();
 
   // From Firebase Hook
+
+  // Email And Password
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
+  // Google
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
   // Update Profile
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
@@ -35,15 +42,19 @@ const Signup = () => {
     await updateProfile({ displayName: data.name });
   };
 
-  if (error || updateError) {
+  if (error || updateError || googleError) {
     console.log(error);
+    console.log(updateError);
+    console.log(googleError);
     const customError = error?.message.split('Error');
-    toast.error(customError[1] || error.message);
-    toast.error(updateError);
+    return toast.error(
+      customError[1] || error.message || updateError || googleError
+    );
   }
-  if (user?.user) {
+  if (user?.user?.email) {
     console.log(user.user);
-    toast.success('User Created Successfully');
+    console.log(googleUser);
+    return toast.success('User Created Successfully');
   }
   return (
     <>
@@ -84,7 +95,7 @@ const Signup = () => {
                         </h4>
                       </div>
 
-                      {loading || updating ? (
+                      {loading || updating || googleLoading ? (
                         <Spinner />
                       ) : (
                         <form onSubmit={handleSubmit(onSubmit)}>
@@ -162,20 +173,19 @@ const Signup = () => {
                         </p>
                       </div>
 
-                      <Link
+                      <button
+                        onClick={() => signInWithGoogle()}
                         className="px-7 py-3 text-black font-medium text-sm leading-snug uppercase rounded w-full flex justify-center items-center mb-3 "
-                        to="#!"
                         style={{
                           boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
                         }}
-                        role="button"
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="light"
                       >
                         {/* <!-- Google --> */}
                         <FcGoogle className="mr-4" size={30} />
                         Continue with Google
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </div>

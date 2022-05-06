@@ -1,8 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineMenu } from 'react-icons/ai';
+import auth from '../../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import Spinner from '../Spinner/Spinner';
+import { toast } from 'react-toastify';
+import { signOut } from 'firebase/auth';
 
 const Header = () => {
+  const [user, loading, error] = useAuthState(auth);
+  if (user) {
+    console.log(user);
+  }
+  if (loading) {
+    return <Spinner />;
+  }
+  if (error) {
+    return toast.error(error);
+  }
   return (
     <>
       <nav className="sticky top-0 z-10 w-full flex flex-wrap items-center justify-between py-1 bg-[#17362e] text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light">
@@ -48,27 +63,7 @@ const Header = () => {
             </ul>
           </div>
 
-          {/* <!-- Right Menu --> */}
-          <div className="flex items-center relative">
-            <ul className="navbar-nav uppercase tracking-wider flex pl-0 list-style-none mr-auto">
-              <li className="nav-item p-2">
-                <Link
-                  className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
-                  to="/login"
-                >
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item p-2">
-                <Link
-                  className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
-                  to="/signup"
-                >
-                  Signup
-                </Link>
-              </li>
-            </ul>
-            {/* <!-- Icon --> */}
+          {user ? (
             <div className="dropdown relative ml-1">
               <Link
                 className="dropdown-toggle flex items-center hidden-arrow"
@@ -79,11 +74,9 @@ const Header = () => {
                 aria-expanded="false"
               >
                 <img
-                  src="https://mdbootstrap.com/img/new/avatars/2.jpg"
-                  className="rounded-full"
-                  style={{ height: '35px', width: '35px' }}
-                  alt=""
-                  loading="lazy"
+                  src={user?.photoURL}
+                  className="rounded-full h-9 w-9 "
+                  alt={user?.displayName}
                 />
               </Link>
               <ul
@@ -95,20 +88,41 @@ const Header = () => {
                     className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
                     to="/"
                   >
-                    Name
+                    {user?.displayName}
                   </Link>
                 </li>
                 <li>
-                  <Link
+                  <button
+                    onClick={() => signOut(auth)}
                     className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
-                    to="/"
                   >
                     Sign out
+                  </button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <div className="flex items-center relative">
+              <ul className="navbar-nav uppercase tracking-wider flex pl-0 list-style-none mr-auto">
+                <li className="nav-item p-2">
+                  <Link
+                    className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item p-2">
+                  <Link
+                    className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
+                    to="/signup"
+                  >
+                    Signup
                   </Link>
                 </li>
               </ul>
             </div>
-          </div>
+          )}
         </div>
       </nav>
     </>
