@@ -31,30 +31,41 @@ const Signup = () => {
   // Google
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
+
   // Update Profile
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
   // Submit
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
 
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
   };
 
-  if (error || updateError || googleError) {
+  // Error
+  if (error) {
     console.log(error);
-    console.log(updateError);
-    console.log(googleError);
     const customError = error?.message.split('Error');
-    return toast.error(
-      customError[1] || error.message || updateError || googleError
-    );
+    toast.error(customError[1] || error.message);
   }
-  if (user?.user?.email) {
-    console.log(user.user);
-    console.log(googleUser);
-    return toast.success('User Created Successfully');
+  if (googleError) {
+    console.log(googleError);
+    toast.error(googleError);
+  }
+  if (updateError) {
+    console.log(updateError);
+    toast.error(updateError);
+  }
+
+  // User
+  if (user?.user?.uid) {
+    // console.log(user?.user);
+    toast.success('User Sign up Successfully');
+  }
+  if (googleUser) {
+    // console.log(googleUser?.user);
+    toast.success('User Sign up Successfully');
   }
   return (
     <>
