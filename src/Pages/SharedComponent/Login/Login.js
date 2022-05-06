@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.css';
 import { FcGoogle } from 'react-icons/fc';
 import { useForm } from 'react-hook-form';
 import auth from '../../../firebase.init';
 import {
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from 'react-firebase-hooks/auth';
@@ -30,22 +31,44 @@ const Login = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
+  // Reset
+  const [email, setEmail] = useState('');
+  const [sendPasswordResetEmail, sending, resetError] =
+    useSendPasswordResetEmail(auth);
+
+  const resetPassword = async () => {
+    console.log(email);
+    await sendPasswordResetEmail(email);
+    if (email) {
+      toast.success('Reset password mail sent!');
+    } else {
+      toast.warn('Submit the form for set email');
+    }
+  };
+
   // Submit
   const onSubmit = (data) => {
     // console.log(data);
-
+    setEmail(data?.email);
     signInWithEmailAndPassword(data.email, data.password);
   };
 
   // Error
   if (error) {
-    console.log(error);
+    // console.log(error);
     const customError = error?.message.split('Error');
-    toast.error(customError[1] || error.message);
+    toast.error(customError[1] || error?.message);
   }
   if (googleError) {
-    console.log(googleError);
-    toast.error(googleError);
+    // console.log(googleError);
+    const customError = googleError?.message.split('Error');
+    toast.error(customError[1] || googleError?.message);
+  }
+
+  if (resetError) {
+    // console.log(resetError);
+    const customError = resetError?.message.split('Error');
+    toast.error(customError[1] || resetError?.message);
   }
 
   // User
@@ -69,7 +92,7 @@ const Login = () => {
                     <div className="md:p-12 md:mx-6">
                       <div className="text-center">
                         <img
-                          className="mx-auto w-48"
+                          className="mx-auto w-48 pt-4"
                           src="https://i.ibb.co/LNNVLvF/logo.png"
                           alt="logo"
                         />
@@ -78,7 +101,7 @@ const Login = () => {
                         </h4>
                       </div>
 
-                      {loading || googleLoading ? (
+                      {loading || googleLoading || sending ? (
                         <Spinner />
                       ) : (
                         <form onSubmit={handleSubmit(onSubmit)}>
@@ -86,6 +109,7 @@ const Login = () => {
                           <div className="mb-4">
                             <input
                               type="email"
+                              name="email"
                               className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                               id="email"
                               placeholder="Your email"
@@ -131,6 +155,7 @@ const Login = () => {
                             </p>
 
                             <button
+                              onClick={resetPassword}
                               type="button"
                               className="text-gray-500 hover:underline"
                             >
