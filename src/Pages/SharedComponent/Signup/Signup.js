@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
@@ -6,7 +6,7 @@ import {
 } from 'react-firebase-hooks/auth';
 import '../Login/Login.css';
 import { FcGoogle } from 'react-icons/fc';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import auth from '../../../firebase.init';
 import Spinner from '../Spinner/Spinner';
@@ -67,6 +67,14 @@ const Signup = () => {
     // console.log(googleUser?.user);
     toast.success('User Sign up Successfully');
   }
+
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+  useEffect(() => {
+    if (user || googleUser) {
+      navigate(from, { replace: true });
+    }
+  }, [user, googleUser]);
   return (
     <>
       <section className="h-full gradient-form bg-gray-200 ">

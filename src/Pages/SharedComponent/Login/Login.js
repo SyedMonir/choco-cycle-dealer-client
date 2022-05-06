@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.css';
 import { FcGoogle } from 'react-icons/fc';
 import { useForm } from 'react-hook-form';
@@ -10,7 +10,7 @@ import {
 } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import Spinner from '../Spinner/Spinner';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -80,6 +80,14 @@ const Login = () => {
     // console.log(googleUser?.user);
     toast.success('User Logged in Successfully');
   }
+
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+  useEffect(() => {
+    if (user || googleUser) {
+      navigate(from, { replace: true });
+    }
+  }, [user, googleUser]);
   return (
     <>
       <section className="h-full gradient-form bg-gray-200 ">

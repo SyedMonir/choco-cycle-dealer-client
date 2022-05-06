@@ -7,6 +7,7 @@ import Footer from './Pages/SharedComponent/Footer/Footer';
 import Header from './Pages/SharedComponent/Header/Header';
 import Login from './Pages/SharedComponent/Login/Login';
 import Signup from './Pages/SharedComponent/Signup/Signup';
+import RequireAuth from './Pages/SharedComponent/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -15,7 +16,14 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/cycle/:cycleId" element={<CycleDetails />} />
+          <Route
+            path="/cycle/:cycleId"
+            element={
+              <RequireAuth>
+                <CycleDetails />
+              </RequireAuth>
+            }
+          />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
         </Routes>
