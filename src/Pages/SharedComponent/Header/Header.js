@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AiOutlineMenu } from 'react-icons/ai';
 import auth from '../../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Spinner from '../Spinner/Spinner';
 import { toast } from 'react-toastify';
 import { signOut } from 'firebase/auth';
+import './Header.css';
 
 const Header = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -20,7 +21,7 @@ const Header = () => {
   }
   return (
     <>
-      <nav className="sticky top-0 z-10 w-full flex flex-wrap items-center justify-between py-1 bg-[#17362e] text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light">
+      <nav className="sticky top-0 z-10 w-full flex flex-wrap items-center justify-between py-1 bg-[#17362e] text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-xl navbar navbar-expand-lg navbar-light">
         <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
           {/* Hamburger */}
           <button
@@ -53,12 +54,12 @@ const Header = () => {
             {/* <!-- Left Menu --> */}
             <ul className="navbar-nav uppercase tracking-wider flex flex-col pl-0 list-style-none mr-auto">
               <li className="nav-item p-2">
-                <Link
+                <NavLink
                   className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
                   to="/"
                 >
                   Inventory
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -105,20 +106,20 @@ const Header = () => {
             <div className="flex items-center relative">
               <ul className="navbar-nav uppercase tracking-wider flex pl-0 list-style-none mr-auto">
                 <li className="nav-item p-2">
-                  <Link
+                  <NavLink
                     className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
                     to="/login"
                   >
                     Login
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item p-2">
-                  <Link
+                  <NavLink
                     className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
                     to="/signup"
                   >
                     Signup
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
             </div>
