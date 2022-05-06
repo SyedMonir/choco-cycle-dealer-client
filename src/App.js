@@ -1,4 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import CycleDetails from './Pages/CycleDetails/CycleDetails';
 import Home from './Pages/Home/Home';
 import Footer from './Pages/SharedComponent/Footer/Footer';
@@ -19,6 +21,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <ToastContainer />
     </>
   );
 }
