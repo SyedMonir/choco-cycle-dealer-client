@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AiOutlineMenu } from 'react-icons/ai';
+import { FaUserSecret } from 'react-icons/fa';
 import auth from '../../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Spinner from '../Spinner/Spinner';
@@ -10,8 +11,8 @@ import './Header.css';
 
 const Header = () => {
   const [user, loading, error] = useAuthState(auth);
-  if (user) {
-    console.log(user);
+  if (user?.uid) {
+    // console.log(user);
   }
   if (loading) {
     return <Spinner />;
@@ -64,7 +65,7 @@ const Header = () => {
             </ul>
           </div>
 
-          {user ? (
+          {user?.uid ? (
             <div className="dropdown relative ml-1">
               <Link
                 className="dropdown-toggle flex items-center hidden-arrow"
@@ -74,12 +75,17 @@ const Header = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <img
-                  src={user?.photoURL}
-                  className="rounded-full h-9 w-9 "
-                  alt={user?.displayName}
-                />
+                {user?.photoURL ? (
+                  <img
+                    src={user?.photoURL}
+                    className="rounded-full h-9 w-9 "
+                    alt={user?.displayName}
+                  />
+                ) : (
+                  <FaUserSecret color="white" size={25} />
+                )}
               </Link>
+
               <ul
                 className="dropdown-menu min-w-max absolute hidden bg-white  text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 m-0 bg-clip-padding border-none left-auto  right-0"
                 aria-labelledby="dropdownMenuButton2"
@@ -89,7 +95,7 @@ const Header = () => {
                     className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
                     to="/"
                   >
-                    {user?.displayName}
+                    {user?.displayName ? user?.displayName : 'Unknown'}
                   </Link>
                 </li>
                 <li>
