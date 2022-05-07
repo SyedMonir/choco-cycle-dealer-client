@@ -14,6 +14,7 @@ const CycleDetails = () => {
       .then((response) => response.json())
       .then((data) => {
         setCycle(data);
+        console.log(data);
         setSpinner(false);
       });
   }, [cycleId]);

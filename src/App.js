@@ -8,6 +8,7 @@ import Header from './Pages/SharedComponent/Header/Header';
 import Login from './Pages/SharedComponent/Login/Login';
 import Signup from './Pages/SharedComponent/Signup/Signup';
 import RequireAuth from './Pages/SharedComponent/RequireAuth/RequireAuth';
+import Inventory from './Pages/Inventory/Inventory';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/inventory" element={<Inventory />} />
           <Route
             path="/cycle/:cycleId"
             element={

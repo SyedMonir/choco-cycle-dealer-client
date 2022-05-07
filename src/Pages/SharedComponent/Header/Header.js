@@ -57,7 +57,7 @@ const Header = () => {
               <li className="nav-item p-2">
                 <NavLink
                   className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
-                  to="/"
+                  to="/inventory"
                 >
                   Inventory
                 </NavLink>

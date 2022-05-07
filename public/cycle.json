@@ -1,27 +1,67 @@
 [
   {
-    "image": "https://i.ibb.co/F37TLNV/cycle-1.jpg"
+    "image": "https://i.ibb.co/m4qczcS/cycle-1.jpg",
+    "name": "Trek Bicycle Corporation",
+    "description": "Trek got its start in Waterloo, Wisconsin in 1976. According to CNBC, it is the largest bike brand based in the US. Although most of it production has moved overseas, the company still produces some bikes in the US. As of 2014, it was making about 25,000 bicycles domestically each year, which amounted to about half of all bikes produced in the US. Trek produces a wide range of bike styles, at a full range price points. It makes bikes for men, women and children, as well as biking gear and apparel. Along with traditional foot powered bikes, Trek makes several electric mountain bikes. Bike prices range from a few hundred dollars to a few thousand. Although Trek might be the most recognizable name the company produces, it has a full line up of brands in its stable. Those other brands include DreamBikes, Bontrager and Electra. Until 2008, the company also produced LeMond cycles, aline of bikes initially developed by Greg LeMond, a US cyclist who won the Tour de France.",
+    "price": 118,
+    "quantity": 2000,
+    "supplierName": "Greg LeMond"
   },
   {
-    "image": "https://i.ibb.co/fpcDTRz/cycle-2.jpg"
+    "image": "https://i.ibb.co/1st8YzL/cycle-2.jpg",
+    "name": "Connondale",
+    "description": "Cannondale is another top bike brand that dates back to the 1970s. While two buddies founded Trek over a glass of beer, Cannonade was birthed over a pickle factory in Connecticut. At first, the company didn't make bikes but instead produced a bike trailer, accessories and apparel.In 1983, the brand created its first bike, a touring model. It followed up with a racing bike the next year. In 1997, Cannonade made waves at the Tour de France by having members of the Saeco cycling team (who rode the brand's bike) ride on aluminum frames. According to company legend, the leader of the Saeco team declared Cannondale bikes to be the best. Today, the brand produces a range of bikes, including mountain bikes, road bikes and edibikes. It also has models for children, women and tandem bikes. Generally speaking, Cannondale bikes are at the higher end of the pricing spectrum. Most of its models are more than $1,000 and even its kid's bikes are a few hundred dollars each.",
+    "price": 110,
+    "quantity": 1200,
+    "supplierName": "Syed"
   },
 
   {
-    "image": "https://i.ibb.co/0q8SX22/cycle-3.jpg"
+    "image": "https://i.ibb.co/h8p6qJz/cycle-3.jpg",
+    "name": "Kona Bikes",
+    "description": "Kona Bikes is a relative newcomer. The brand was started in 1988 by Dan Gerhard and Jacob Heilbron. The pair continues to own the brand today and it remains to be based out of the Pacific Northwest. Kona's claim to fame is being the first company to produce a straight leg mountain bike production fork. The brand worked with Brodie (aka  Bruce Spicer) to develop the bike style. Currently, Kona has 10 versions of the fork, made for mountain bikes and asphalt bikes of various sizes. Although originally Kona focused on mountain bikes, today it produces a full range of styles including road bikes and cyclocross bikes. It introduced its first carbon frames cycles in 2011 with a cyclocross racer and a Kula Watt 26″ hardtail.",
+    "price": 1200,
+    "quantity": 3000,
+    "supplierName": "Dan Gerhard and Jacob Heilbron"
   },
   {
-    "image": "https://i.ibb.co/chBQ3Bw/cycle-4.jpg"
+    "image": "https://i.ibb.co/pzk8t74/cycle-4.jpg",
+    "name": "Colnago",
+    "description": "Colnago is a bike company based in Italy. The bran dates back to 1952 when Ernesto Colnago founded it in Cambiago. Ernesto Colnago was initially expected to take over his family's farming business but pursued a career in cycling from a young age. At 13, he was the apprentice at a bike company and eventually opened his shop. The Telegraph has called Colnago the Ferrari of cycling brands, describing it as a bike maker for cycling connoisseurs. The description is apt as many of Colnago's higher end models are entirely handmade in Italy and feature top quality components.Colnago is not a budget conscious brand by any means. Its most affordable models cost more than $1000 and its top-of-the-line racing bikes go for more than $5000 or $6000.",
+    "price": 451,
+    "quantity": 311,
+    "supplierName": "Ernesto Colnago"
   },
   {
-    "image": "https://i.ibb.co/k90tZ1f/cycle-5.jpg"
+    "image": "https://i.ibb.co/LYrBWtH/cycle-5.jpg",
+    "name": "Bianchi",
+    "description": "Another Italian bike brand, Bianchi has the distinct honor of being the oldest continually operated cycling company in the world. It dates back to 1885 when 21 year old Eldoardo Bianchi took it upon himself to add a chain to the famous “ordinary” bicycles and to reduce the size of the front wheel. You could say his idea was a success. Over the years, Bianchi was credited with several other developments in this design and function of the bicycle. For example, he created the first ever front brake in 1913. Throughout the 20th century, Bianchi cycles were ridden in several major bicycling tournaments and often won those tournaments. Riding a Bianchi, cyclist Faust Coppi won his first Tour de France in 1949. Felice Gimondi also won the race on a Bianchi in the early 1970s. Today, Bianchi produces city, mountain and racing bikes at a variety of price points, starting at a few hundred dollars. It also makes electric  bikes and models for children.",
+    "price": 3211,
+    "quantity": 700,
+    "supplierName": "Eldoardo Bianchi"
   },
   {
-    "image": "https://i.ibb.co/fkWhVGY/cycle-6.jpg"
+    "image": "https://i.ibb.co/z2tvsZp/cycle-6.jpg",
+    "name": "Raleigh",
+    "description": "Raleigh Bikes is a British cycling brand that got started in 1887 making it one of the oldest bike brands out there. At the time, the brand produced around three bikes per week. As early as 1896, production had increased to 30,000 cycles per year. Throughout the 20th century, demands for the bikes increased and the brands continued to grow producing more and more cycles each year and expanding the size of its factories and plants. It even dabbled in motorcycles for a while. In the US in particular, demand was high for the brand's 10-speed cycles. Like a few other top brands, Rayleigh is no stranger to the Tour de France. Cyclist JoopZoetemelk of Holland won the race on a Rayleigh bike in 1980. In 1989, the French team System's U was riding Raleigh bikes when it lost the Tour by just 8 seconds to Greg LeMond.Today, the brand produces a mix of city/commuter bikes, mountain bikes and road bikes. its prices are relatively moderate with some of its bikes costing in the $300 to $400 range and its higher-end bikes topping out at under $3000.",
+    "price": 400,
+    "quantity": 3000,
+    "supplierName": "Monir"
   },
   {
-    "image": "https://i.ibb.co/VmqNBv1/cycle-7.jpg"
+    "image": "https://i.ibb.co/YQxRj4C/cycle-7.jpg",
+    "name": "Cervelo",
+    "description": "Cervelo is another relatively young bike brand. It got started in 1995 in Canada. The goal of the company is simple: It aims to design the world's fastest bike. To that end, its probably not a brand that you're going to check out if you're new to cycling or if you're looking for a bike for commuting or occasional use. But if you regularly feel the need for speed on your bike, whether you're training for an Ironman or the Tour de France or just enjoy a weekend ride, this might be the brand for you. Cervelo has 5 series  of road bike - the C series, Series, Series, S series and T series. None of its bikes are cheap. The lowest end models, the S series start around $5000 while the P series easily cost more than $10,000.",
+    "price": 10000,
+    "quantity": 99,
+    "supplierName": "Monirul"
   },
   {
-    "image": "https://i.ibb.co/njDqHqD/cycle-8.jpg"
+    "image": "https://i.ibb.co/G7hqySy/cycle-8.jpg",
+    "name": "Orbea",
+    "description": "Orbea is a Spanish bike company that began life in 1840 as a rifle company. It didn't start to make cycles until the 1930s. It employed thousands of Spanish citizens during the era of Civil War and was eventually bought by its employees and turned into a cooperative in the early 1960s. Then it built a larger factory and began producing recreational bikes as well as road and racing bikes. Today, the company produces a range of recreational bikes, road bikes and electric bikes.",
+    "price": 1500,
+    "quantity": 300,
+    "supplierName": "Rifle company"
   }
 ]

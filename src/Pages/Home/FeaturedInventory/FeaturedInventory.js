@@ -1,9 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import useInventory from '../../../hooks/useInventory';
 import Cycle from '../../SharedComponent/Cycle/Cycle';
 import Spinner from '../../SharedComponent/Spinner/Spinner';
 
 const FeaturedInventory = () => {
+  const navigate = useNavigate();
   const [inventory, spinner] = useInventory();
   if (inventory.length > 6) {
     inventory.length = 6;
@@ -21,10 +23,17 @@ const FeaturedInventory = () => {
           <>
             <section className="container grid grid-cols-1 sm:grid-cols-2 p-5 mx-auto">
               {inventory.map((cycle) => (
-                <Cycle key={cycle._id} cycle={cycle}></Cycle>
+                <Cycle key={cycle._id} cycle={cycle}>
+                  {
+                    'data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-out"'
+                  }
+                </Cycle>
               ))}
             </section>
-            <button className="bg-[#1f4037] text-white hover:text-gray-300 uppercase py-1 px-5 rounded">
+            <button
+              onClick={() => navigate(`/inventory`)}
+              className="bg-[#1f4037] text-white hover:text-gray-300 uppercase py-1 px-5 rounded"
+            >
               Show more
             </button>
           </>
