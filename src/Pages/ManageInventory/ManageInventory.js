@@ -33,104 +33,124 @@ const ManageInventory = () => {
   };
   return (
     <>
-      <div className="container my-8 flex mx-auto justify-between w-full">
-        <div className="w-full">
-          <h1 className=" text-4xl">Manage Inventory</h1>
-          <span className="inline-block h-1 w-16 rounded bg-[#1f4037] mt-6 mb-4"></span>
+      <figure className="relative">
+        <img
+          className="w-full h-60 shadow-md object-cover opacity-75"
+          src="https://i.ibb.co/B6L6h4K/manage-inventory.jpg"
+          alt="manage-inventory"
+        />
+        <div
+          style={{ boxShadow: '0 0 20px #eee' }}
+          className="absolute top-[25%] left-[5%] p-4"
+        >
+          <h1 className="text-white text-4xl">Manage Inventory</h1>
+          <span className="inline-block h-1 w-16 rounded bg-white mt-6 mb-4"></span>
+        </div>
+      </figure>
+
+      <div className="bg-gradient-to-r from-[#0f2027] via-[#203a43] to-[#2c5364] ">
+        <div className="container py-4 flex mx-auto justify-between ">
+          <div className="my-8  shadow-lg w-1/3">
+            <button
+              onClick={() => navigate(`/inventory`)}
+              className="btn-grad py-3 flex mx-auto w-full justify-center tracking-widest "
+            >
+              Full Inventory
+            </button>
+          </div>
+          <div className="my-8  shadow-lg w-1/3">
+            <button
+              onClick={() => navigate(`/add-cycle`)}
+              className="btn-grad py-3 flex mx-auto w-full justify-center tracking-widest "
+            >
+              Add New Cycle
+            </button>
+          </div>
         </div>
 
-        <div className="my-8 shadow-2xl w-1/2">
-          <button
-            onClick={() => navigate(`/add-cycle`)}
-            className="flex mx-auto w-full justify-center tracking-widest text-white bg-gradient-to-r from-[#1f4037c4] via-[#3ab87d]  to-[#1f4037c4] bg-opacity-75  border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded"
-          >
-            Add New Cycle
-          </button>
-        </div>
-      </div>
-
-      <div className="flex flex-col container mx-auto text-center">
-        <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-            <div className="overflow-x-auto">
-              {spinner ? (
-                <Spinner />
-              ) : (
-                <table className="min-w-full">
-                  <thead className="bg-gray-800 text-white border-b">
-                    <tr>
-                      <th
-                        scope="col"
-                        className="text-sm font-medium px-6 py-4 "
-                      >
-                        #
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-sm font-medium px-6 py-4 "
-                      >
-                        Name
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-sm font-medium px-6 py-4 "
-                      >
-                        Price
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-sm font-medium px-6 py-4 "
-                      >
-                        Seller
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-sm font-medium px-6 py-4 "
-                      >
-                        Quantity
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-sm font-medium px-6 py-4 "
-                      >
-                        Delete
-                      </th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    {inventory?.map((cycle) => (
-                      <tr
-                        key={cycle._id}
-                        className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 text-gray-900 text-xs"
-                      >
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium ">
-                          {1}
-                        </td>
-                        <td className="text-sm  px-6 py-4 whitespace-nowrap">
-                          {cycle?.name ? cycle?.name : 'No Product Name'}
-                        </td>
-                        <td className="text-sm  px-6 py-4 whitespace-nowrap">
-                          {cycle?.price ? cycle?.price : '-'}
-                        </td>
-                        <td className="text-sm  px-6 py-4 whitespace-nowrap">
-                          {cycle?.supplierName
-                            ? cycle?.supplierName
-                            : 'Anonymous'}
-                        </td>
-                        <td className="text-sm  px-6 py-4 whitespace-nowrap">
-                          {cycle?.quantity ? cycle?.quantity : '-'}
-                        </td>
-                        <td className=" cursor-pointer text-red-500 hover:text-red-600 px-6 flex justify-center py-4 whitespace-nowrap">
-                          <button onClick={() => handleDelete(cycle._id)}>
-                            <RiDeleteBinFill size={25} />
-                          </button>
-                        </td>
+        <div className="flex flex-col container mx-auto text-center ">
+          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+              <div className="overflow-x-auto">
+                {spinner ? (
+                  <Spinner />
+                ) : (
+                  <table className="min-w-full mb-8">
+                    <thead className="bg-gray-800 text-white border-b">
+                      <tr>
+                        <th
+                          scope="col"
+                          className="text-sm font-medium px-6 py-4 "
+                        >
+                          #
+                        </th>
+                        <th
+                          scope="col"
+                          className="text-sm font-medium px-6 py-4 "
+                        >
+                          Name
+                        </th>
+                        <th
+                          scope="col"
+                          className="text-sm font-medium px-6 py-4 "
+                        >
+                          Price
+                        </th>
+                        <th
+                          scope="col"
+                          className="text-sm font-medium px-6 py-4 "
+                        >
+                          Seller
+                        </th>
+                        <th
+                          scope="col"
+                          className="text-sm font-medium px-6 py-4 "
+                        >
+                          Quantity
+                        </th>
+                        <th
+                          scope="col"
+                          className="text-sm font-medium px-6 py-4 "
+                        >
+                          Delete
+                        </th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              )}
+                    </thead>
+
+                    <tbody className="">
+                      {inventory?.map((cycle) => (
+                        <tr
+                          key={cycle._id}
+                          className="bg-gray-200 border-b border-gray-300 transition duration-300 ease-in-out hover:bg-white text-gray-900 text-xs"
+                        >
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium ">
+                            {1}
+                          </td>
+                          <td className="text-sm  px-6 py-4 whitespace-nowrap">
+                            {cycle?.name ? cycle?.name : 'No Product Name'}
+                          </td>
+                          <td className="text-sm  px-6 py-4 whitespace-nowrap">
+                            {cycle?.price ? cycle?.price : '-'}
+                          </td>
+                          <td className="text-sm  px-6 py-4 whitespace-nowrap">
+                            {cycle?.supplierName
+                              ? cycle?.supplierName
+                              : 'Anonymous'}
+                          </td>
+                          <td className="text-sm  px-6 py-4 whitespace-nowrap">
+                            {cycle?.quantity ? cycle?.quantity : '-'}
+                          </td>
+                          <td className=" cursor-pointer text-red-500 hover:text-red-600 px-6 flex justify-center py-4 whitespace-nowrap">
+                            <button onClick={() => handleDelete(cycle._id)}>
+                              <RiDeleteBinFill size={25} />
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
             </div>
           </div>
         </div>

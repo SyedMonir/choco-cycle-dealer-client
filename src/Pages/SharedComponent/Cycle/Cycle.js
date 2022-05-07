@@ -36,7 +36,7 @@ const Cycle = ({ cycle }) => {
             </p>
             <button
               onClick={() => navigate(`/cycle/${cycle?._id}`)}
-              className="bg-[#1f4037] text-white hover:text-gray-300 uppercase py-1 px-4 rounded"
+              className="btn-grad py-1 px-8"
             >
               Update
             </button>
