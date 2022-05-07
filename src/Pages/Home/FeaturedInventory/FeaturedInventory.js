@@ -21,13 +21,9 @@ const FeaturedInventory = () => {
           <Spinner />
         ) : (
           <>
-            <section className="container grid grid-cols-1 sm:grid-cols-2 p-5 mx-auto">
+            <section className="container grid grid-cols-1 sm:gap-4 lg:grid-cols-2 p-5 mx-auto">
               {inventory.map((cycle) => (
-                <Cycle key={cycle._id} cycle={cycle}>
-                  {
-                    'data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-out"'
-                  }
-                </Cycle>
+                <Cycle key={cycle._id} cycle={cycle}></Cycle>
               ))}
             </section>
             <button

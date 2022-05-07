@@ -3,155 +3,189 @@ import { useParams } from 'react-router-dom';
 import { MdFavorite } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import Spinner from '../SharedComponent/Spinner/Spinner';
+import { toast } from 'react-toastify';
 
 const CycleDetails = () => {
   const { cycleId } = useParams();
   const [cycle, setCycle] = useState({});
-  const [spinner, setSpinner] = useState(false);
   useEffect(() => {
-    setSpinner(true);
     fetch(`https://choco-cycle-dealer.herokuapp.com/cycle/${cycleId}`)
       .then((response) => response.json())
       .then((data) => {
         setCycle(data);
-        console.log(data);
-        setSpinner(false);
+        // console.log(data);
       });
-  }, [cycleId]);
+  }, [cycle, cycleId]);
+  // console.log(cycle);
+
+  // Update Quantity
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const totalQuantity =
+      parseInt(e.target?.Quantity?.value) + parseInt(cycle?.quantity);
+
+    const updated = { totalQuantity };
+
+    fetch(`http://localhost:5000/cycle/${cycleId}`, {
+      method: 'PUT',
+      body: JSON.stringify(updated),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        toast.success(`Quantity increased ${totalQuantity}`);
+      });
+
+    e.target.reset();
+  };
   return (
     <>
-      {spinner ? (
-        <Spinner />
-      ) : (
-        <section className="text-gray-400 bg-gray-900 body-font overflow-hidden">
-          <div className="container px-5 py-24 mx-auto">
-            <div className="lg:w-4/5 mx-auto flex flex-wrap">
-              <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
-                <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                  {cycleId}
-                </h2>
-                <h2 className="text-base title-font my-2 text-gray-300 tracking-widest">
-                  Supplier: {''}
-                </h2>
-                <h1 className="text-white text-3xl title-font font-medium mb-4">
-                  Animated Night Hill Illustrations
-                </h1>
-                <ul
-                  className="nav nav-tabs flex justify-between flex-row flex-wrap list-none border-b-0 pl-0 mb-4"
-                  id="tabs-tab3"
-                  role="tablist"
+      <section className="text-gray-400 bg-gray-900 body-font overflow-hidden">
+        <div className="container px-5 py-24 mx-auto">
+          <div className="lg:w-4/5 mx-auto flex flex-wrap">
+            <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+              <h2 className="text-sm title-font text-gray-500 tracking-widest">
+                {cycleId}
+              </h2>
+              <h2 className="text-base title-font my-2 text-gray-300 tracking-widest">
+                Supplier: {cycle?.supplierName}
+              </h2>
+              <h1 className="text-white text-3xl title-font font-medium mb-4">
+                {cycle?.name}
+              </h1>
+              <ul
+                className="nav nav-tabs flex justify-between flex-row flex-wrap list-none border-b-0 pl-0 mb-4"
+                id="tabs-tab3"
+                role="tablist"
+              >
+                <li className="nav-item" role="presentation">
+                  <Link
+                    to="#tabs-home3"
+                    className=" nav-link flex-grow w-full block text-lg leading-tight border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-300 focus:border-transparent active"
+                    id="tabs-home-tab3"
+                    data-bs-toggle="pill"
+                    data-bs-target="#tabs-home3"
+                    role="tab"
+                    aria-controls="tabs-home3"
+                    aria-selected="true"
+                  >
+                    Description
+                  </Link>
+                </li>
+                <li className="nav-item" role="presentation">
+                  <Link
+                    to="#tabs-profile3"
+                    className="nav-link flex-grow w-full block text-lg leading-tight border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-300 focus:border-transparent"
+                    id="tabs-profile-tab3"
+                    data-bs-toggle="pill"
+                    data-bs-target="#tabs-profile3"
+                    role="tab"
+                    aria-controls="tabs-profile3"
+                    aria-selected="false"
+                  >
+                    Reviews
+                  </Link>
+                </li>
+                <li className="nav-item" role="presentation">
+                  <Link
+                    to="#tabs-messages3"
+                    className="nav-link flex-grow text-lg  w-full block  leading-tight border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-300 focus:border-transparent"
+                    id="tabs-messages-tab3"
+                    data-bs-toggle="pill"
+                    data-bs-target="#tabs-messages3"
+                    role="tab"
+                    aria-controls="tabs-messages3"
+                    aria-selected="false"
+                  >
+                    Details
+                  </Link>
+                </li>
+              </ul>
+              <div className="tab-content" id="tabs-tabContent3">
+                <div
+                  className="tab-pane fade show active"
+                  id="tabs-home3"
+                  role="tabpanel"
+                  aria-labelledby="tabs-home-tab3"
                 >
-                  <li className="nav-item" role="presentation">
-                    <Link
-                      to="#tabs-home3"
-                      className=" nav-link flex-grow w-full block text-lg leading-tight border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-300 focus:border-transparent active"
-                      id="tabs-home-tab3"
-                      data-bs-toggle="pill"
-                      data-bs-target="#tabs-home3"
-                      role="tab"
-                      aria-controls="tabs-home3"
-                      aria-selected="true"
-                    >
-                      Description
-                    </Link>
-                  </li>
-                  <li className="nav-item" role="presentation">
-                    <Link
-                      to="#tabs-profile3"
-                      className="nav-link flex-grow w-full block text-lg leading-tight border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-300 focus:border-transparent"
-                      id="tabs-profile-tab3"
-                      data-bs-toggle="pill"
-                      data-bs-target="#tabs-profile3"
-                      role="tab"
-                      aria-controls="tabs-profile3"
-                      aria-selected="false"
-                    >
-                      Reviews
-                    </Link>
-                  </li>
-                  <li className="nav-item" role="presentation">
-                    <Link
-                      to="#tabs-messages3"
-                      className="nav-link flex-grow text-lg  w-full block  leading-tight border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-300 focus:border-transparent"
-                      id="tabs-messages-tab3"
-                      data-bs-toggle="pill"
-                      data-bs-target="#tabs-messages3"
-                      role="tab"
-                      aria-controls="tabs-messages3"
-                      aria-selected="false"
-                    >
-                      Details
-                    </Link>
-                  </li>
-                </ul>
-                <div className="tab-content" id="tabs-tabContent3">
-                  <div
-                    className="tab-pane fade show active"
-                    id="tabs-home3"
-                    role="tabpanel"
-                    aria-labelledby="tabs-home-tab3"
-                  >
-                    <p className="leading-relaxed mb-4">
-                      Fam locavore kickstarter distillery. Mixtape chillwave
-                      tumeric sriracha taximy chia microdosing tilde DIY. XOXO
-                      fam iligo juiceramps cornhole raw denim forage brooklyn.
-                      Everyday carry +1 seitan poutine tumeric. Gastropub blue
-                      bottle austin listicle pour-over, neutra jean.
-                    </p>
-                    <div className="flex border-t border-gray-800 py-2">
-                      <span className="text-gray-500">Color</span>
-                      <span className="ml-auto text-white">Blue</span>
-                    </div>
-                    <div className="flex border-t border-gray-800 py-2">
-                      <span className="text-gray-500">Size</span>
-                      <span className="ml-auto text-white">Medium</span>
-                    </div>
-                    <div className="flex border-t border-b mb-6 border-gray-800 py-2">
-                      <span className="text-gray-500">Quantity</span>
-                      <span className="ml-auto text-white">4</span>
-                    </div>
-                    <div className="flex">
-                      <span className="title-font font-medium text-2xl text-white">
-                        $58.00
-                      </span>
-                      <button className="flex ml-auto text-white bg-[#1f4037] border-0 py-2 px-6 focus:outline-none hover:text-gray-300 rounded">
-                        Shipped
-                      </button>
-                      <button className="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                        <MdFavorite />
-                      </button>
-                    </div>
+                  <p className="leading-relaxed mb-4">{cycle?.description}</p>
+                  <div className="flex border-t border-gray-800 py-2">
+                    <span className="text-gray-500">Color</span>
+                    <span className="ml-auto text-white">Blue</span>
                   </div>
-
-                  {/* 2 */}
-                  <div
-                    className="tab-pane fade"
-                    id="tabs-profile3"
-                    role="tabpanel"
-                    aria-labelledby="tabs-profile-tab3"
-                  >
-                    Tab 2 content button version
+                  <div className="flex border-t border-b mb-6 border-gray-800 py-2">
+                    <span className="text-gray-500">Quantity</span>
+                    <span className="ml-auto text-white">
+                      {cycle?.quantity === 0 ? 'Stock Out' : cycle?.quantity}
+                    </span>
                   </div>
-                  {/* 3 */}
-                  <div
-                    className="tab-pane fade"
-                    id="tabs-messages3"
-                    role="tabpanel"
-                    aria-labelledby="tabs-profile-tab3"
-                  >
-                    Tab 3 content button version
+                  <div className="flex">
+                    <span className="title-font font-medium text-2xl text-white">
+                      $ {cycle?.price}
+                    </span>
+                    <button className="flex ml-auto text-white bg-[#1f4037] border-0 py-2 px-6 focus:outline-none hover:text-gray-300 rounded">
+                      Shipped
+                    </button>
+                    <button className="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                      <MdFavorite />
+                    </button>
                   </div>
                 </div>
+
+                {/* 2 */}
+                <div
+                  className="tab-pane fade"
+                  id="tabs-profile3"
+                  role="tabpanel"
+                  aria-labelledby="tabs-profile-tab3"
+                >
+                  Reviews Coming Soon!
+                </div>
+                {/* 3 */}
+                <div
+                  className="tab-pane fade"
+                  id="tabs-messages3"
+                  role="tabpanel"
+                  aria-labelledby="tabs-profile-tab3"
+                >
+                  Details Coming Soon!
+                </div>
               </div>
-              <img
-                alt=""
-                className="lg:w-1/2 w-full lg:h-4/5 h-64 object-cover object-center rounded"
-                src={cycle?.image}
+            </div>
+            <img
+              alt={cycle?.name}
+              className="lg:w-1/2 w-full lg:h-4/5 h-96 object-cover object-center rounded"
+              src={cycle?.image}
+            />
+          </div>
+        </div>
+
+        <div className="block p-6 rounded-lg shadow-lg bg-white mx-auto mb-4 max-w-md">
+          <h3 className="text-center mb-4 text-green-600">Restock the item</h3>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group mb-6">
+              <input
+                type="number"
+                name="Quantity"
+                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
+                id="Quantity"
+                placeholder="Quantity"
               />
             </div>
-          </div>
-        </section>
-      )}
+
+            <button
+              type="submit"
+              className="w-full px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out"
+            >
+              Update
+            </button>
+          </form>
+        </div>
+      </section>
     </>
   );
 };

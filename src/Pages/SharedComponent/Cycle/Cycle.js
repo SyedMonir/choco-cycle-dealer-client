@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Cycle = ({ cycle }) => {
+  // data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-out"
   const navigate = useNavigate();
   return (
     <div className="flex justify-center m-5">
