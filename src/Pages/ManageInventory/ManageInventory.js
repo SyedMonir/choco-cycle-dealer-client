@@ -41,7 +41,7 @@ const ManageInventory = () => {
         />
         <div
           style={{ boxShadow: '0 0 20px #eee' }}
-          className="absolute top-[25%] left-[5%] p-4"
+          className="absolute top-[25%] left-[5%] p-4 bg-black bg-opacity-30"
         >
           <h1 className="text-white text-4xl">Manage Inventory</h1>
           <span className="inline-block h-1 w-16 rounded bg-white mt-6 mb-4"></span>
@@ -49,19 +49,19 @@ const ManageInventory = () => {
       </figure>
 
       <div className="bg-gradient-to-r from-[#0f2027] via-[#203a43] to-[#2c5364] ">
-        <div className="container py-4 flex mx-auto justify-between ">
-          <div className="my-8  shadow-lg w-1/3">
+        <div className="container py-4 flex mx-auto justify-around sm:justify-between ">
+          <div className="my-4 sm:my-8 shadow-lg w-1/3">
             <button
               onClick={() => navigate(`/inventory`)}
-              className="btn-grad py-3 flex mx-auto w-full justify-center tracking-widest "
+              className="btn-grad px-4 py-3 text-sm sm:text-base flex mx-auto w-full justify-center tracking-widest "
             >
               Full Inventory
             </button>
           </div>
-          <div className="my-8  shadow-lg w-1/3">
+          <div className="my-4 sm:my-8 shadow-lg w-1/3">
             <button
               onClick={() => navigate(`/add-cycle`)}
-              className="btn-grad py-3 flex mx-auto w-full justify-center tracking-widest "
+              className="btn-grad px-4 text-sm py-3 sm:text-base flex mx-auto w-full justify-center tracking-widest "
             >
               Add New Cycle
             </button>
@@ -75,7 +75,7 @@ const ManageInventory = () => {
                 {spinner ? (
                   <Spinner />
                 ) : (
-                  <table className="min-w-full mb-8">
+                  <table className="min-w-full mb-8 mx-4 sm:mx-0">
                     <thead className="bg-gray-800 text-white border-b">
                       <tr>
                         <th

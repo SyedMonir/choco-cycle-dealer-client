@@ -99,7 +99,7 @@ const Header = () => {
                   <img
                     src={user?.photoURL}
                     className="rounded-full h-9 w-9 "
-                    alt={user?.displayName}
+                    alt={user?.displayName.slice(0, 5)}
                   />
                 ) : (
                   <FaUserSecret color="white" size={25} />
