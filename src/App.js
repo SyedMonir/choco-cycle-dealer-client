@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
+// Toast
 import 'react-toastify/dist/ReactToastify.css';
+
 import { ToastContainer } from 'react-toastify';
 import CycleDetails from './Pages/CycleDetails/CycleDetails';
 import Home from './Pages/Home/Home';

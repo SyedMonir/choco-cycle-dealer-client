@@ -2,46 +2,91 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { MdFavorite } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import Spinner from '../SharedComponent/Spinner/Spinner';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const CycleDetails = () => {
   const { cycleId } = useParams();
   const [cycle, setCycle] = useState({});
+
   useEffect(() => {
     fetch(`https://choco-cycle-dealer.herokuapp.com/cycle/${cycleId}`)
       .then((response) => response.json())
       .then((data) => {
         setCycle(data);
-        // console.log(data);
       });
   }, [cycle, cycleId]);
-  // console.log(cycle);
+
+  // const confirmUpdate = () => {
+  //   confirmAlert({
+  //     customUI: ({ onClose }) => {
+  //       return (
+  //         <div className="custom-ui text-center border-1 border-solid border-green-400 p-16 bg-white">
+  //           <h1>Are you sure?</h1>
+  //           <p>You want to add {} in your stock?</p>
+  //           <div className="flex justify-evenly">
+  //             <button className="text-red-600" onClick={onClose}>
+  //               No
+  //             </button>
+  //             <button
+  //               className="text-green-500"
+  //               onClick={() => {
+  //                 console.log(confirm);
+  //                 setConfirm(true);
+  //                 onClose();
+  //                 console.log(confirm);
+  //               }}
+  //             >
+  //               Yes, Update it!
+  //             </button>
+  //           </div>
+  //         </div>
+  //       );
+  //     },
+  //   });
+  // };
 
   // Update Quantity
   const handleSubmit = (e) => {
     e.preventDefault();
+    Swal.fire({
+      title: 'Are you sure?',
+      text: `You want to add more items in your stock?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, update it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/cycle/${cycleId}`, {
+          method: 'PUT',
+          body: JSON.stringify(updated),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            // toast.success(`Quantity increased ${totalQuantity}`);
+          });
+        Swal.fire('Updated!', `Quantity increased ${totalQuantity}`, 'success');
+      }
+    });
 
+    const onlyPositive = e.target?.Quantity?.value;
+    if (onlyPositive > 0) {
+      console.log(onlyPositive);
+    }
     const totalQuantity =
       parseInt(e.target?.Quantity?.value) + parseInt(cycle?.quantity);
 
     const updated = { totalQuantity };
 
-    fetch(`http://localhost:5000/cycle/${cycleId}`, {
-      method: 'PUT',
-      body: JSON.stringify(updated),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        toast.success(`Quantity increased ${totalQuantity}`);
-      });
-
     e.target.reset();
   };
+
   return (
     <>
       <section className="text-gray-400 bg-gray-900 body-font overflow-hidden">
@@ -52,10 +97,11 @@ const CycleDetails = () => {
                 {cycleId}
               </h2>
               <h2 className="text-base title-font my-2 text-gray-300 tracking-widest">
-                Supplier: {cycle?.supplierName}
+                Supplier:{' '}
+                {cycle?.supplierName ? cycle?.supplierName : 'Anonymous'}
               </h2>
               <h1 className="text-white text-3xl title-font font-medium mb-4">
-                {cycle?.name}
+                {cycle?.name ? cycle?.name : 'No Product Name'}
               </h1>
               <ul
                 className="nav nav-tabs flex justify-between flex-row flex-wrap list-none border-b-0 pl-0 mb-4"
@@ -112,7 +158,9 @@ const CycleDetails = () => {
                   role="tabpanel"
                   aria-labelledby="tabs-home-tab3"
                 >
-                  <p className="leading-relaxed mb-4">{cycle?.description}</p>
+                  <p className="leading-relaxed mb-4">
+                    {cycle?.description ? cycle?.description : 'No Description'}
+                  </p>
                   <div className="flex border-t border-gray-800 py-2">
                     <span className="text-gray-500">Color</span>
                     <span className="ml-auto text-white">Blue</span>
@@ -127,7 +175,7 @@ const CycleDetails = () => {
                     <span className="title-font font-medium text-2xl text-white">
                       $ {cycle?.price}
                     </span>
-                    <button className="flex ml-auto text-white bg-[#1f4037] border-0 py-2 px-6 focus:outline-none hover:text-gray-300 rounded">
+                    <button className="flex ml-auto text-white bg-green-600 border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded">
                       Shipped
                     </button>
                     <button className="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
@@ -158,7 +206,7 @@ const CycleDetails = () => {
             </div>
             <img
               alt={cycle?.name}
-              className="lg:w-1/2 w-full lg:h-4/5 h-96 object-cover object-center rounded"
+              className="lg:w-1/2 w-full lg:h-4/5 h-[40rem] object-cover object-center rounded"
               src={cycle?.image}
             />
           </div>
@@ -172,6 +220,7 @@ const CycleDetails = () => {
                 type="number"
                 name="Quantity"
                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
+                required
                 id="Quantity"
                 placeholder="Quantity"
               />
