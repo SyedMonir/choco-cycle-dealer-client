@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { MdFavorite } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
 const CycleDetails = () => {
@@ -17,38 +16,43 @@ const CycleDetails = () => {
       });
   }, [cycle, cycleId]);
 
-  // const confirmUpdate = () => {
-  //   confirmAlert({
-  //     customUI: ({ onClose }) => {
-  //       return (
-  //         <div className="custom-ui text-center border-1 border-solid border-green-400 p-16 bg-white">
-  //           <h1>Are you sure?</h1>
-  //           <p>You want to add {} in your stock?</p>
-  //           <div className="flex justify-evenly">
-  //             <button className="text-red-600" onClick={onClose}>
-  //               No
-  //             </button>
-  //             <button
-  //               className="text-green-500"
-  //               onClick={() => {
-  //                 console.log(confirm);
-  //                 setConfirm(true);
-  //                 onClose();
-  //                 console.log(confirm);
-  //               }}
-  //             >
-  //               Yes, Update it!
-  //             </button>
-  //           </div>
-  //         </div>
-  //       );
-  //     },
-  //   });
-  // };
+  // Handle Shipped
+  const handleShipped = () => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, shipped it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/cycle/${cycleId}`, {
+          method: 'PUT',
+          body: JSON.stringify(updated),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+          });
+        Swal.fire('Shipped!', `Your product has been shipped!`, 'success');
+      }
+    });
+
+    const totalQuantity = parseInt(cycle?.quantity) - 1;
+
+    const updated = { totalQuantity };
+  };
 
   // Update Quantity
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // For confirm
     Swal.fire({
       title: 'Are you sure?',
       text: `You want to add more items in your stock?`,
@@ -69,15 +73,20 @@ const CycleDetails = () => {
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
-            // toast.success(`Quantity increased ${totalQuantity}`);
           });
         Swal.fire('Updated!', `Quantity increased ${totalQuantity}`, 'success');
       }
     });
 
     const onlyPositive = e.target?.Quantity?.value;
-    if (onlyPositive > 0) {
-      console.log(onlyPositive);
+    if (onlyPositive <= 0) {
+      console.log('True');
+      e.target.reset();
+      return Swal.fire(
+        'Check Again!',
+        "You can't add negative or zero quantity!",
+        'question'
+      );
     }
     const totalQuantity =
       parseInt(e.target?.Quantity?.value) + parseInt(cycle?.quantity);
@@ -175,9 +184,14 @@ const CycleDetails = () => {
                     <span className="title-font font-medium text-2xl text-white">
                       $ {cycle?.price}
                     </span>
-                    <button className="flex ml-auto text-white bg-green-600 border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded">
+                    {/* Shipped */}
+                    <button
+                      onClick={handleShipped}
+                      className="flex ml-auto text-white bg-green-600 border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded"
+                    >
                       Shipped
                     </button>
+                    {/* Favorite */}
                     <button className="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                       <MdFavorite />
                     </button>
