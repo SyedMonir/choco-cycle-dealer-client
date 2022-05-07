@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { MdFavorite } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const CycleDetails = () => {
   const { cycleId } = useParams();
+  const navigate = useNavigate();
   const [cycle, setCycle] = useState({});
 
   useEffect(() => {
@@ -247,6 +248,15 @@ const CycleDetails = () => {
               Update
             </button>
           </form>
+        </div>
+
+        <div className="my-8 shadow-2xl ">
+          <button
+            onClick={() => navigate(`/manage-inventory`)}
+            className="flex mx-auto w-1/2 justify-center tracking-widest text-white bg-gradient-to-r from-[#1f4037c4] via-[#3ab87d]  to-[#1f4037c4] bg-opacity-75  border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded"
+          >
+            Manage Inventory
+          </button>
         </div>
       </section>
     </>

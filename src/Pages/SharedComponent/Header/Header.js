@@ -53,7 +53,7 @@ const Header = () => {
               />
             </Link>
             {/* <!-- Left Menu --> */}
-            <ul className="navbar-nav uppercase tracking-wider flex flex-col pl-0 list-style-none mr-auto">
+            <ul className="navbar-nav tracking-wider flex flex-col pl-0 list-style-none mr-auto">
               <li className="nav-item p-2">
                 <NavLink
                   className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
@@ -61,6 +61,14 @@ const Header = () => {
                 >
                   Inventory
                 </NavLink>
+                {user?.uid && (
+                  <NavLink
+                    className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
+                    to="/manage-inventory"
+                  >
+                    Manage-Inventory
+                  </NavLink>
+                )}
               </li>
             </ul>
           </div>

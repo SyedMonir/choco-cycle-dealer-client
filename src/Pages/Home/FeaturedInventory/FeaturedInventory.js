@@ -27,10 +27,10 @@ const FeaturedInventory = () => {
               ))}
             </section>
             <button
-              onClick={() => navigate(`/inventory`)}
+              onClick={() => navigate(`/manage-inventory`)}
               className="bg-[#1f4037] text-white hover:text-gray-300 uppercase py-1 px-5 rounded"
             >
-              Show more
+              Manage Inventory
             </button>
           </>
         )}
