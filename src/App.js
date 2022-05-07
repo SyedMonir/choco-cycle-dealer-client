@@ -12,6 +12,7 @@ import Signup from './Pages/SharedComponent/Signup/Signup';
 import RequireAuth from './Pages/SharedComponent/RequireAuth/RequireAuth';
 import Inventory from './Pages/Inventory/Inventory';
 import ManageInventory from './Pages/ManageInventory/ManageInventory';
+import AddCycle from './Pages/AddCycle/AddCycle';
 
 function App() {
   return (
@@ -34,6 +35,14 @@ function App() {
             element={
               <RequireAuth>
                 <ManageInventory />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/add-cycle"
+            element={
+              <RequireAuth>
+                <AddCycle />
               </RequireAuth>
             }
           />

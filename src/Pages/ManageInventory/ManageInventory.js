@@ -3,9 +3,11 @@ import useInventory from '../../hooks/useInventory';
 import Spinner from '../SharedComponent/Spinner/Spinner';
 import { RiDeleteBinFill } from 'react-icons/ri';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const ManageInventory = () => {
   const [inventory, spinner] = useInventory();
+  const navigate = useNavigate();
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -31,9 +33,20 @@ const ManageInventory = () => {
   };
   return (
     <>
-      <div className="text-center my-8">
-        <h1 className=" text-4xl">Manage Inventory</h1>
-        <span className="inline-block h-1 w-16 rounded bg-[#1f4037] mt-6 mb-4"></span>
+      <div className="container my-8 flex mx-auto justify-between w-full">
+        <div className="w-full">
+          <h1 className=" text-4xl">Manage Inventory</h1>
+          <span className="inline-block h-1 w-16 rounded bg-[#1f4037] mt-6 mb-4"></span>
+        </div>
+
+        <div className="my-8 shadow-2xl w-1/2">
+          <button
+            onClick={() => navigate(`/add-cycle`)}
+            className="flex mx-auto w-full justify-center tracking-widest text-white bg-gradient-to-r from-[#1f4037c4] via-[#3ab87d]  to-[#1f4037c4] bg-opacity-75  border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded"
+          >
+            Add New Cycle
+          </button>
+        </div>
       </div>
 
       <div className="flex flex-col container mx-auto text-center">

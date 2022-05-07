@@ -61,15 +61,27 @@ const Header = () => {
                 >
                   Inventory
                 </NavLink>
-                {user?.uid && (
-                  <NavLink
-                    className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
-                    to="/manage-inventory"
-                  >
-                    Manage-Inventory
-                  </NavLink>
-                )}
               </li>
+              {user?.uid && (
+                <>
+                  <li className="nav-item p-2">
+                    <NavLink
+                      className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
+                      to="/manage-inventory"
+                    >
+                      Manage-Inventory
+                    </NavLink>
+                  </li>
+                  <li className="nav-item p-2">
+                    <NavLink
+                      className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
+                      to="/add-cycle"
+                    >
+                      Add-Cycle
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
 
