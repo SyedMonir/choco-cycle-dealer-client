@@ -70,7 +70,7 @@ const AddCycle = () => {
         <img
           className="w-full h-60 shadow-md opacity-80 max-w-full object-cover bg-top "
           src="https://i.ibb.co/ncyqskr/add-cycle.jpg"
-          alt="manage-inventory"
+          alt="add-cycle"
         />
         <div
           style={{ boxShadow: '0 0 20px #eee' }}
@@ -82,7 +82,7 @@ const AddCycle = () => {
       </figure>
 
       <div className="bg-gradient-to-r p-6 from-[#0f2027] via-[#203a43] to-[#2c5364]">
-        <div className="block p-6 rounded-lg shadow-lg bg-white max-w-md">
+        <div className="block mx-auto p-6 rounded-lg shadow-lg bg-white max-w-md">
           <h2 className="text-center mt-4 mb-5 uppercase text-lg">
             Add To Inventory
           </h2>

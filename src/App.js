@@ -13,6 +13,7 @@ import RequireAuth from './Pages/SharedComponent/RequireAuth/RequireAuth';
 import Inventory from './Pages/Inventory/Inventory';
 import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import AddCycle from './Pages/AddCycle/AddCycle';
+import MyCycles from './Pages/MyCycles/MyCycles';
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/inventory" element={<Inventory />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
           <Route
             path="/cycle/:cycleId"
             element={
@@ -46,8 +49,16 @@ function App() {
               </RequireAuth>
             }
           />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/my-cycles"
+            element={
+              <RequireAuth>
+                <MyCycles />
+              </RequireAuth>
+            }
+          />
+
+          <Route path="*" element={<Home />} />
         </Routes>
       </main>
       <Footer />

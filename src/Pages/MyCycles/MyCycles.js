@@ -1,13 +1,24 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+import auth from '../../firebase.init';
 import useInventory from '../../hooks/useInventory';
 import Spinner from '../SharedComponent/Spinner/Spinner';
 import { RiDeleteBinFill } from 'react-icons/ri';
-import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
 
-const ManageInventory = () => {
+const MyCycles = () => {
+  const [user, loading, error] = useAuthState(auth);
   const [inventory, spinner] = useInventory();
-  const navigate = useNavigate();
+  if (user?.uid) {
+    // console.log(user);
+  }
+  if (loading) {
+    return <Spinner />;
+  }
+  if (error) {
+    return toast.error(error);
+  }
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -35,40 +46,30 @@ const ManageInventory = () => {
     <>
       <figure className="relative">
         <img
-          className="w-full h-60 shadow-md object-cover opacity-75"
-          src="https://i.ibb.co/B6L6h4K/manage-inventory.jpg"
-          alt="manage-inventory"
+          className="w-full h-60 shadow-md opacity-80 max-w-full object-cover bg-top "
+          src="https://i.ibb.co/8NjVy5r/my-cycles.jpg"
+          alt="my-cycles"
         />
         <div
           style={{ boxShadow: '0 0 20px #eee' }}
           className="absolute top-[25%] left-[5%] p-4 bg-black bg-opacity-30"
         >
-          <h1 className="text-white text-4xl">Manage Inventory</h1>
+          <h1 className="text-white text-4xl capitalize">
+            {user?.displayName} cycle!
+          </h1>
           <span className="inline-block h-1 w-16 rounded bg-white mt-6 mb-4"></span>
+        </div>
+
+        <div className=" hidden sm:flex items-center flex-col absolute top-[3.2%] right-[5%] p-4 bg-black bg-opacity-30">
+          <img className="w-36" src={user?.photoURL} alt="" />
+          <h3>{user?.displayName}</h3>
+          <h4>{user?.email}</h4>
         </div>
       </figure>
 
+      {/* My Cycles  */}
       <div className="bg-gradient-to-r from-[#0f2027] via-[#203a43] to-[#2c5364] ">
-        <div className="container py-4 flex mx-auto justify-around sm:justify-between ">
-          <div className="my-4 sm:my-8 shadow-lg w-1/3">
-            <button
-              onClick={() => navigate(`/inventory`)}
-              className="btn-grad px-4 py-3 text-sm sm:text-base flex mx-auto w-full justify-center tracking-widest "
-            >
-              Full Inventory
-            </button>
-          </div>
-          <div className="my-4 sm:my-8 shadow-lg w-1/3">
-            <button
-              onClick={() => navigate(`/add-cycle`)}
-              className="btn-grad px-4 text-sm py-3 sm:text-base flex mx-auto w-full justify-center tracking-widest "
-            >
-              Add New Cycle
-            </button>
-          </div>
-        </div>
-
-        <div className="flex flex-col container mx-auto text-center ">
+        <div className="flex flex-col container mx-auto text-center pt-4">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
               <div className="overflow-x-auto">
@@ -100,18 +101,6 @@ const ManageInventory = () => {
                           scope="col"
                           className="text-sm font-medium px-6 py-4 "
                         >
-                          Email
-                        </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium px-6 py-4 "
-                        >
-                          Seller
-                        </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium px-6 py-4 "
-                        >
                           Quantity
                         </th>
                         <th
@@ -138,20 +127,7 @@ const ManageInventory = () => {
                           <td className="text-sm  px-6 py-4 whitespace-nowrap">
                             {cycle?.price ? cycle?.price : '-'}
                           </td>
-                          <td className="text-sm  px-6 py-4 whitespace-nowrap">
-                            {cycle?.email ? (
-                              cycle?.email
-                            ) : (
-                              <span className="text-red-600">
-                                Missing Email!
-                              </span>
-                            )}
-                          </td>
-                          <td className="text-sm  px-6 py-4 whitespace-nowrap">
-                            {cycle?.supplierName
-                              ? cycle?.supplierName
-                              : 'Anonymous'}
-                          </td>
+
                           <td className="text-sm  px-6 py-4 whitespace-nowrap">
                             {cycle?.quantity ? cycle?.quantity : '-'}
                           </td>
@@ -174,4 +150,4 @@ const ManageInventory = () => {
   );
 };
 
-export default ManageInventory;
+export default MyCycles;
