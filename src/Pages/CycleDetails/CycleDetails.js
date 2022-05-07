@@ -8,6 +8,7 @@ const CycleDetails = () => {
   const { cycleId } = useParams();
   const navigate = useNavigate();
   const [cycle, setCycle] = useState({});
+  const [disable, setDisable] = useState(false);
 
   useEffect(() => {
     fetch(`https://choco-cycle-dealer.herokuapp.com/cycle/${cycleId}`)
@@ -96,6 +97,15 @@ const CycleDetails = () => {
 
     e.target.reset();
   };
+
+  // Disable Button
+  useEffect(() => {
+    if (cycle?.quantity === 0) {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
+  }, [cycle?.quantity]);
 
   return (
     <>
@@ -188,6 +198,7 @@ const CycleDetails = () => {
                     {/* Shipped */}
                     <button
                       onClick={handleShipped}
+                      disabled={disable}
                       className="flex ml-auto text-white bg-green-600 border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded"
                     >
                       Shipped
