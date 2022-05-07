@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
@@ -6,10 +6,37 @@ import auth from '../../firebase.init';
 import useInventory from '../../hooks/useInventory';
 import Spinner from '../SharedComponent/Spinner/Spinner';
 import { RiDeleteBinFill } from 'react-icons/ri';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
 
 const MyCycles = () => {
   const [user, loading, error] = useAuthState(auth);
   const [inventory, spinner] = useInventory();
+  const [myCycle, setMyCycle] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const getMyCycle = async () => {
+      const email = user?.email;
+      const url = `http://localhost:5000/my-cycles?email=${email}`;
+      try {
+        // const { data } = await axiosPrivate.get(url);
+        const { data } = await axios.get(url, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          },
+        });
+        setMyCycle(data);
+      } catch (error) {
+        console.log(error);
+        if (error.response.status === 401 || error.response.status === 403) {
+          signOut(auth);
+          navigate('/login');
+        }
+      }
+    };
+    getMyCycle();
+  }, [user?.email]);
   if (user?.uid) {
     // console.log(user);
   }
@@ -60,7 +87,10 @@ const MyCycles = () => {
           <span className="inline-block h-1 w-16 rounded bg-white mt-6 mb-4"></span>
         </div>
 
-        <div className=" hidden sm:flex items-center flex-col absolute top-[3.2%] right-[5%] p-4 bg-black bg-opacity-30">
+        <div
+          style={{ boxShadow: '0 0 20px #eee' }}
+          className="text-white hidden sm:flex items-center flex-col absolute top-[3.2%] right-[5%] p-4 bg-black bg-opacity-30"
+        >
           <img className="w-36" src={user?.photoURL} alt="" />
           <h3>{user?.displayName}</h3>
           <h4>{user?.email}</h4>
