@@ -15,6 +15,7 @@ import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import AddCycle from './Pages/AddCycle/AddCycle';
 import MyCycles from './Pages/MyCycles/MyCycles';
 import Blogs from './Pages/Blogs/Blogs';
+import NoRoute from './Pages/SharedComponent/NoRoute/NoRoute';
 
 function App() {
   return (
@@ -59,7 +60,7 @@ function App() {
             }
           />
           <Route path="/blogs" element={<Blogs />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<NoRoute />} />
         </Routes>
       </main>
       <Footer />

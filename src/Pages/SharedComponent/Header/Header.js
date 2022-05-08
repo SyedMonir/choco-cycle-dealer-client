@@ -115,6 +115,14 @@ const Header = () => {
                   Blogs
                 </NavLink>
               </li>
+              <li className="nav-item p-2">
+                <NavLink
+                  className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"
+                  to="/404"
+                >
+                  404
+                </NavLink>
+              </li>
             </ul>
           </div>
 
