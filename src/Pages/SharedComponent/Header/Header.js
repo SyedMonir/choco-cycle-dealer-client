@@ -70,7 +70,7 @@ const Header = () => {
               />
             </Link>
             {/* <!-- Left Menu --> */}
-            <ul className="navbar-nav tracking-wider flex flex-col pl-0 list-style-none mr-auto">
+            <ul className="navbar-nav tracking-wider flex flex-col pl-0 list-style-none uppercase mx-auto">
               <li className="nav-item p-2">
                 <NavLink
                   className="nav-link text-white hover:text-gray-400 focus:text-gray-700 p-0"

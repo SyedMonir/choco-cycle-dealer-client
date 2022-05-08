@@ -191,7 +191,7 @@ const Login = () => {
                                 id="collapseWidthExample"
                               >
                                 <div className="block p-6 rounded-lg shadow-lg bg-white max-w-sm w-full text-center">
-                                  rambling.ctg@gmail.com <br /> pass: 123456
+                                  zombiealam007@gmail.com <br /> pass: 123456
                                 </div>
                               </div>
                             </div>

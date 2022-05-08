@@ -9,10 +9,23 @@ const Inventory = () => {
   const navigate = useNavigate();
   return (
     <section className="relative bg-gradient-to-r from-[#0f2027] via-[#203a43] to-[#2c5364]">
-      <section className="text-center py-8 ">
-        <p className="text-xs text-gray-200">YOUR RIDE START HERE.</p>
-        <h2 className="text-3xl text-white">Our Inventories</h2>
-        <span className="inline-block h-1 w-16 rounded bg-white mt-6 mb-4"></span>
+      <section className="text-center pb-8 ">
+        <figure className="relative">
+          <img
+            className="w-full h-60 shadow-md object-cover opacity-50"
+            src="https://i.ibb.co/LN0J6j7/inventory.jpg"
+            alt="inventory"
+          />
+          <div
+            style={{ boxShadow: '0 0 20px #eee' }}
+            className="absolute top-[25%] right-[5%] p-4 bg-black bg-opacity-30"
+          >
+            <p className="text-xs text-gray-200">YOUR RIDE START HERE.</p>
+            <h1 className="text-white text-4xl">Our Inventories</h1>
+            <span className="inline-block h-1 w-16 rounded bg-white mt-6 mb-4"></span>
+          </div>
+        </figure>
+
         {spinner ? (
           <Spinner />
         ) : (
