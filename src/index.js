@@ -6,6 +6,9 @@ import App from './App';
 import 'tw-elements';
 // AOS Animation
 import 'aos/dist/aos.css';
+// Animate Animation
+import 'animate.css';
+
 import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

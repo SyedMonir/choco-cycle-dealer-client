@@ -14,8 +14,8 @@ const HeroSection = () => {
           // style={{ backgroundColor: 'rgba(2, 56, 53, 0.7)' }}
         >
           <div className="flex justify-center items-center h-full">
-            <div className="text-white">
-              <h2 className="font-semibold text-4xl mb-4">
+            <div className="text-white animate__animated animate__backInUp ">
+              <h2 className=" font-semibold text-4xl mb-4">
                 Welcome to the Biggest Cycle Warehouse in Bangladesh.
               </h2>
               <h4 className="font-semibold text-xl mb-6">

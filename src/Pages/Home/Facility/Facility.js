@@ -45,7 +45,7 @@ const Facility = () => {
               </div>
             </div>
             <div
-              data-aos="zoom-in"
+              data-aos="zoom-in-up"
               data-aos-delay="80"
               data-aos-duration="1000"
               data-aos-easing="ease-in-out"
@@ -73,7 +73,7 @@ const Facility = () => {
               </div>
             </div>
             <div
-              data-aos="zoom-in-down"
+              data-aos="zoom-in-up"
               data-aos-delay="80"
               data-aos-duration="1000"
               data-aos-easing="ease-in-out"

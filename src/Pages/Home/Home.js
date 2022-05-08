@@ -3,6 +3,7 @@ import FeaturedInventory from './FeaturedInventory/FeaturedInventory';
 import Facility from './Facility/Facility';
 import HeroSection from './HeroSection/HeroSection';
 import BestSellers from './BestSellers/BestSellers';
+import ServiceAndRepair from './ServiceAndRepair/ServiceAndRepair';
 
 const Home = () => {
   return (
@@ -10,7 +11,7 @@ const Home = () => {
       <HeroSection />
       <Facility />
       <FeaturedInventory />
-
+      <ServiceAndRepair />
       <BestSellers />
     </>
   );

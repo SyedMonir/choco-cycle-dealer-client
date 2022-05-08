@@ -20,7 +20,7 @@ const BestSellers = () => {
   if (inventory.length > 7) {
     inventory.length = 7;
   }
-  console.log(inventory);
+  // console.log(inventory);
   return (
     <section className="text-center py-12 relative bg-gradient-to-r from-[#0f2027] via-[#203a43] to-[#2c5364]">
       <p className="text-xs text-gray-400">CHECK IT OUT.</p>
