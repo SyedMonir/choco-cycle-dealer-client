@@ -49,7 +49,7 @@ const ManageInventory = () => {
       </figure>
 
       <div className="bg-gradient-to-r from-[#0f2027] via-[#203a43] to-[#2c5364] ">
-        <div className="container py-4 flex mx-auto justify-around sm:justify-between ">
+        <div className="container py-4 flex mx-auto justify-around  ">
           <div className="my-4 sm:my-8 shadow-lg w-1/3">
             <button
               onClick={() => navigate(`/inventory`)}
@@ -69,7 +69,7 @@ const ManageInventory = () => {
         </div>
 
         <div className="flex flex-col container mx-auto text-center ">
-          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="overflow-x-auto sm:-mx-0 lg:-mx-0">
             <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
               <div className="overflow-x-auto">
                 {spinner ? (

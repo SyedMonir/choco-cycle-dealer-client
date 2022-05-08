@@ -107,7 +107,7 @@ const MyCycles = () => {
       {/* My Cycles  */}
       <div className="bg-gradient-to-r from-[#0f2027] via-[#203a43] to-[#2c5364] ">
         <div className="flex flex-col container mx-auto text-center pt-4">
-          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="overflow-x-auto sm:-mx-0 lg:-mx-0">
             <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
               <div className="overflow-x-auto">
                 <table className="min-w-full mb-8 mx-4 sm:mx-0">

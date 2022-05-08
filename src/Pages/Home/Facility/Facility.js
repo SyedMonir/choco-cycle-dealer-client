@@ -7,7 +7,10 @@ const Facility = () => {
     AOS.refresh();
   }, []);
   return (
-    <section className="text-center py-12 text-gray-300 bg-[#1f4037]">
+    <section
+      id="facility"
+      className="text-center pb-12 pt-16 text-gray-300 bg-[#1f4037]"
+    >
       <p className="text-xs">YOUR RIDE START HERE.</p>
       <h2 className="text-3xl text-[#88f5c2]">Our Facilities and Features</h2>
       <span className="inline-block h-1 w-16 rounded bg-[#88f5c2] mt-6 mb-4"></span>
@@ -16,7 +19,7 @@ const Facility = () => {
         <div className="container px-5 py-10 mx-auto">
           <div className="flex flex-wrap -m-4">
             <div
-              data-aos="zoom-in-right"
+              data-aos="zoom-in-up"
               data-aos-delay="80"
               data-aos-duration="1000"
               data-aos-easing="ease-in-out"
@@ -70,7 +73,7 @@ const Facility = () => {
               </div>
             </div>
             <div
-              data-aos="zoom-in-left"
+              data-aos="zoom-in-down"
               data-aos-delay="80"
               data-aos-duration="1000"
               data-aos-easing="ease-in-out"
