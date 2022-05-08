@@ -261,10 +261,10 @@ const CycleDetails = () => {
           </form>
         </div>
 
-        <div className="my-8 shadow-2xl ">
+        <div className="my-8 ">
           <button
             onClick={() => navigate(`/manage-inventory`)}
-            className="flex mx-auto w-1/2 justify-center tracking-widest text-white bg-gradient-to-r from-[#1f4037c4] via-[#3ab87d]  to-[#1f4037c4] bg-opacity-75  border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded"
+            className="btn-grad w-1/2 px-4 py-3 text-sm sm:text-base flex mx-auto justify-center tracking-widest "
           >
             Manage Inventory
           </button>

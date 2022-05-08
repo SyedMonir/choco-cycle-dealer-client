@@ -14,6 +14,7 @@ import Inventory from './Pages/Inventory/Inventory';
 import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import AddCycle from './Pages/AddCycle/AddCycle';
 import MyCycles from './Pages/MyCycles/MyCycles';
+import Blogs from './Pages/Blogs/Blogs';
 
 function App() {
   return (
@@ -57,7 +58,7 @@ function App() {
               </RequireAuth>
             }
           />
-
+          <Route path="/blogs" element={<Blogs />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </main>
