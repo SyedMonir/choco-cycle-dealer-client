@@ -50,7 +50,7 @@ const AddCycle = () => {
       confirmButtonText: 'Yes, Add it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch('http://localhost:5000/cycle', {
+        fetch('https://choco-cycle-dealer.herokuapp.com/cycle', {
           method: 'POST',
           body: JSON.stringify(item),
           headers: {

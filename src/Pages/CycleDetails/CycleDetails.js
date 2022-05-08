@@ -30,7 +30,7 @@ const CycleDetails = () => {
       confirmButtonText: 'Yes, shipped it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/cycle/${cycleId}`, {
+        fetch(`https://choco-cycle-dealer.herokuapp.com/cycle/${cycleId}`, {
           method: 'PUT',
           body: JSON.stringify(updated),
           headers: {
@@ -65,7 +65,7 @@ const CycleDetails = () => {
       confirmButtonText: 'Yes, update it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/cycle/${cycleId}`, {
+        fetch(`https://choco-cycle-dealer.herokuapp.com/cycle/${cycleId}`, {
           method: 'PUT',
           body: JSON.stringify(updated),
           headers: {

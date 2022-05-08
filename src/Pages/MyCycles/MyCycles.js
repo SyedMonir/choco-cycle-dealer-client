@@ -17,7 +17,7 @@ const MyCycles = () => {
   useEffect(() => {
     const getMyCycle = async () => {
       const email = user?.email;
-      const url = `http://localhost:5000/my-cycles?email=${email}`;
+      const url = `https://choco-cycle-dealer.herokuapp.com/my-cycles?email=${email}`;
       try {
         const { data } = await axios.get(url, {
           headers: {
