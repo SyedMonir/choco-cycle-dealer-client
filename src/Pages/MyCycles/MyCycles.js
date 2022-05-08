@@ -3,16 +3,15 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import auth from '../../firebase.init';
-import useInventory from '../../hooks/useInventory';
 import Spinner from '../SharedComponent/Spinner/Spinner';
 import { RiDeleteBinFill } from 'react-icons/ri';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
+import { FaUserSecret } from 'react-icons/fa';
 
 const MyCycles = () => {
   const [user, loading, error] = useAuthState(auth);
-  const [inventory, spinner] = useInventory();
   const [myCycle, setMyCycle] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -37,6 +36,7 @@ const MyCycles = () => {
     };
     getMyCycle();
   }, [user?.email]);
+
   if (user?.uid) {
     // console.log(user);
   }
@@ -82,7 +82,7 @@ const MyCycles = () => {
           className="absolute top-[25%] left-[5%] p-4 bg-black bg-opacity-30"
         >
           <h1 className="text-white text-4xl capitalize">
-            {user?.displayName} cycle!
+            {user?.displayName ? user?.displayName : 'Unknown'} cycle's!
           </h1>
           <span className="inline-block h-1 w-16 rounded bg-white mt-6 mb-4"></span>
         </div>
@@ -91,8 +91,16 @@ const MyCycles = () => {
           style={{ boxShadow: '0 0 20px #eee' }}
           className="text-white hidden sm:flex items-center flex-col absolute top-[3.2%] right-[5%] p-4 bg-black bg-opacity-30"
         >
-          <img className="w-36" src={user?.photoURL} alt="" />
-          <h3>{user?.displayName}</h3>
+          {user?.photoURL ? (
+            <img
+              src={user?.photoURL}
+              className="rounded-full w-36 "
+              alt={user?.displayName.slice(0, 5)}
+            />
+          ) : (
+            <FaUserSecret color="white" size={145} />
+          )}
+          <h3>{user?.displayName ? user?.displayName : 'Unknown'}</h3>
           <h4>{user?.email}</h4>
         </div>
       </figure>
@@ -103,74 +111,70 @@ const MyCycles = () => {
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
               <div className="overflow-x-auto">
-                {spinner ? (
-                  <Spinner />
-                ) : (
-                  <table className="min-w-full mb-8 mx-4 sm:mx-0">
-                    <thead className="bg-gray-800 text-white border-b">
-                      <tr>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium px-6 py-4 "
-                        >
-                          #
-                        </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium px-6 py-4 "
-                        >
-                          Name
-                        </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium px-6 py-4 "
-                        >
-                          Price
-                        </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium px-6 py-4 "
-                        >
-                          Quantity
-                        </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium px-6 py-4 "
-                        >
-                          Delete
-                        </th>
+                <table className="min-w-full mb-8 mx-4 sm:mx-0">
+                  <thead className="bg-gray-800 text-white border-b">
+                    <tr>
+                      <th
+                        scope="col"
+                        className="text-sm font-medium px-6 py-4 "
+                      >
+                        #
+                      </th>
+                      <th
+                        scope="col"
+                        className="text-sm font-medium px-6 py-4 "
+                      >
+                        Name
+                      </th>
+                      <th
+                        scope="col"
+                        className="text-sm font-medium px-6 py-4 "
+                      >
+                        Price
+                      </th>
+                      <th
+                        scope="col"
+                        className="text-sm font-medium px-6 py-4 "
+                      >
+                        Quantity
+                      </th>
+                      <th
+                        scope="col"
+                        className="text-sm font-medium px-6 py-4 "
+                      >
+                        Delete
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody className="">
+                    {myCycle?.map((cycle) => (
+                      <tr
+                        key={cycle._id}
+                        className="bg-gray-200 border-b border-gray-300 transition duration-300 ease-in-out hover:bg-white text-gray-900 text-xs"
+                      >
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium ">
+                          {1}
+                        </td>
+                        <td className="text-sm  px-6 py-4 whitespace-nowrap">
+                          {cycle?.name ? cycle?.name : 'No Product Name'}
+                        </td>
+                        <td className="text-sm  px-6 py-4 whitespace-nowrap">
+                          {cycle?.price ? cycle?.price : '-'}
+                        </td>
+
+                        <td className="text-sm  px-6 py-4 whitespace-nowrap">
+                          {cycle?.quantity ? cycle?.quantity : '-'}
+                        </td>
+                        <td className=" cursor-pointer text-red-500 hover:text-red-600 px-6 flex justify-center py-4 whitespace-nowrap">
+                          <button onClick={() => handleDelete(cycle._id)}>
+                            <RiDeleteBinFill size={25} />
+                          </button>
+                        </td>
                       </tr>
-                    </thead>
-
-                    <tbody className="">
-                      {inventory?.map((cycle) => (
-                        <tr
-                          key={cycle._id}
-                          className="bg-gray-200 border-b border-gray-300 transition duration-300 ease-in-out hover:bg-white text-gray-900 text-xs"
-                        >
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium ">
-                            {1}
-                          </td>
-                          <td className="text-sm  px-6 py-4 whitespace-nowrap">
-                            {cycle?.name ? cycle?.name : 'No Product Name'}
-                          </td>
-                          <td className="text-sm  px-6 py-4 whitespace-nowrap">
-                            {cycle?.price ? cycle?.price : '-'}
-                          </td>
-
-                          <td className="text-sm  px-6 py-4 whitespace-nowrap">
-                            {cycle?.quantity ? cycle?.quantity : '-'}
-                          </td>
-                          <td className=" cursor-pointer text-red-500 hover:text-red-600 px-6 flex justify-center py-4 whitespace-nowrap">
-                            <button onClick={() => handleDelete(cycle._id)}>
-                              <RiDeleteBinFill size={25} />
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                )}
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

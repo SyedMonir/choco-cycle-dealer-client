@@ -97,7 +97,7 @@ const AddCycle = () => {
                 placeholder="Cycle Name"
               />
             </div>
-            <div className="form-group mb-6">
+            {/* <div className="form-group mb-6">
               <input
                 type="email"
                 value={user?.email}
@@ -108,7 +108,7 @@ const AddCycle = () => {
                 required
                 placeholder="Email address"
               />
-            </div>
+            </div> */}
             <div className="form-group mb-2">
               <input
                 type="text"
@@ -152,7 +152,7 @@ const AddCycle = () => {
                 placeholder="Quantity"
               />
             </div>
-            <div className="form-group mb-6">
+            {/* <div className="form-group mb-6">
               <input
                 type="text"
                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -162,7 +162,7 @@ const AddCycle = () => {
                 required
                 placeholder="Supplier Name"
               />
-            </div>
+            </div> */}
             <div className=" shadow-lg">
               <button
                 type="submit"

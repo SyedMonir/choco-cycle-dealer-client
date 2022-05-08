@@ -11,6 +11,7 @@ import {
 import { toast } from 'react-toastify';
 import Spinner from '../Spinner/Spinner';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useToken from '../../../hooks/useToken';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -30,6 +31,8 @@ const Login = () => {
   // Google
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
+
+  const [token] = useToken(user || googleUser);
 
   // Reset
   const [email, setEmail] = useState('');
@@ -88,6 +91,11 @@ const Login = () => {
       navigate(from, { replace: true });
     }
   }, [user, googleUser]);
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
+
   return (
     <>
       <section className="h-full gradient-form bg-gray-200 ">
