@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 import Spinner from '../Spinner/Spinner';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useToken from '../../../hooks/useToken';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -39,14 +40,24 @@ const Login = () => {
   const [sendPasswordResetEmail, sending, resetError] =
     useSendPasswordResetEmail(auth);
 
-  const resetPassword = async () => {
-    console.log(email);
-    await sendPasswordResetEmail(email);
-    if (email) {
-      toast.success('Reset password mail sent!');
-    } else {
-      toast.warn('Submit the form for set email');
-    }
+  const resetPassword = () => {
+    Swal.fire({
+      title: 'We will send you a reset email.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Sent reset email!',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await sendPasswordResetEmail(email);
+        if (email) {
+          Swal.fire('Send!', 'Sent mail successfully!', 'success');
+        } else {
+          Swal.fire('No Email', 'Submit the form for set email :)', 'error');
+        }
+      }
+    });
   };
 
   // Submit

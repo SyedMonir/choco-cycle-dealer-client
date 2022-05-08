@@ -8,6 +8,7 @@ import Spinner from '../Spinner/Spinner';
 import { toast } from 'react-toastify';
 import { signOut } from 'firebase/auth';
 import './Header.css';
+import Swal from 'sweetalert2';
 
 const Header = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -20,6 +21,22 @@ const Header = () => {
   if (error) {
     return toast.error(error);
   }
+
+  const handleDelete = () => {
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Sign-out!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        signOut(auth);
+        Swal.fire('Sign out!', 'Sign out successfully!', 'success');
+      }
+    });
+  };
   return (
     <>
       <nav className="sticky top-0 z-10 w-full flex flex-wrap items-center justify-between py-1 bg-[#17362e] text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-xl navbar navbar-expand-lg navbar-light">
@@ -128,7 +145,7 @@ const Header = () => {
                 </li>
                 <li>
                   <button
-                    onClick={() => signOut(auth)}
+                    onClick={handleDelete}
                     className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
                   >
                     Sign out

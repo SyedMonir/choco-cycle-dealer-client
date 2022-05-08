@@ -19,7 +19,6 @@ const MyCycles = () => {
       const email = user?.email;
       const url = `http://localhost:5000/my-cycles?email=${email}`;
       try {
-        // const { data } = await axiosPrivate.get(url);
         const { data } = await axios.get(url, {
           headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
