@@ -14,24 +14,26 @@ const Cycle = ({ cycle }) => {
         />
         <div className="p-6 flex flex-col justify-center">
           <h5 className="text-gray-900 text-xl font-medium mb-2">
-            {cycle?.name}
+            {cycle?.name ? cycle?.name : 'No Product Name'}
           </h5>
           <p className="text-gray-700 text-base mb-4 text-justify">
-            {cycle?.description.slice(0, 105) + '..'}
+            {cycle?.description
+              ? cycle?.description.slice(0, 105) + '..'
+              : '...'}
           </p>
           <div className="flex justify-between">
             <p className="text-gray-900 text-xl font-bold">
-              Price: $ {cycle?.price}
+              Price: $ {cycle?.price ? cycle?.price : '-'}
             </p>
             <p className="text-gray-900 text-lg font-medium">
-              Stock: {cycle?.quantity}
+              Stock: {cycle?.quantity ? cycle?.quantity : '-'}
             </p>
           </div>
           <div className="flex justify-between items-center my-5">
             <p className="text-gray-600 text-xs">
               Seller:{' '}
               <span className="underline cursor-pointer">
-                {cycle?.supplierName}
+                {cycle?.supplierName ? cycle?.supplierName : 'Anonymous'}
               </span>
             </p>
             <button

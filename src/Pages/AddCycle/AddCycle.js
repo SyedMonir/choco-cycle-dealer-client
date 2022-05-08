@@ -26,7 +26,7 @@ const AddCycle = () => {
     const description = event.target?.description?.value;
     const price = event.target?.price?.value;
     const quantity = event.target?.quantity?.value;
-    const supplierName = event.target?.supplierName?.value;
+    const supplierName = user?.displayName;
 
     const item = {
       name,

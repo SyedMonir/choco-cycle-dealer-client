@@ -53,6 +53,7 @@ const Login = () => {
         await sendPasswordResetEmail(email);
         if (email) {
           Swal.fire('Send!', 'Sent mail successfully!', 'success');
+          toast.success('Reset mail sent!');
         } else {
           Swal.fire('No Email', 'Submit the form for set email :)', 'error');
         }
@@ -159,7 +160,8 @@ const Login = () => {
                               {errors.password && 'Password is required'}
                             </span>
                           </div>
-                          <div className="text-center pt-1 mb-4 pb-1">
+
+                          <div className="text-center pt-1 mb-2 pb-1">
                             <button
                               className="gradient-color inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
                               type="submit"
@@ -169,6 +171,32 @@ const Login = () => {
                               Login
                             </button>
                           </div>
+
+                          <div className="default-user">
+                            <p className="mb-2">
+                              <button
+                                className="inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-600 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseWidthExample"
+                                aria-expanded="false"
+                                aria-controls="collapseWidthExample"
+                              >
+                                Default User
+                              </button>
+                            </p>
+                            <div className="w-full">
+                              <div
+                                className="collapse "
+                                id="collapseWidthExample"
+                              >
+                                <div className="block p-6 rounded-lg shadow-lg bg-white max-w-sm w-full text-center">
+                                  rambling.ctg@gmail.com <br /> pass: 123456
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
                           <div className="flex items-center justify-between mb-4">
                             <p className="mb-0 mr-2">
                               Don't have an account?
